@@ -1178,6 +1178,19 @@ function afterUpdate(fn) {
 function setContext(key, context) {
   get_current_component().$$.context.set(key, context);
 }
+// shorthand events, or if we want to implement
+// a real bubbling mechanism
+
+
+function bubble(component, event) {
+  var callbacks = component.$$.callbacks[event.type];
+
+  if (callbacks) {
+    callbacks.slice().forEach(function (fn) {
+      return fn(event);
+    });
+  }
+}
 
 var dirty_components = [];
 var binding_callbacks = [];
@@ -1667,6 +1680,15 @@ function attr_dev(node, attribute, value) {
   });
 }
 
+function prop_dev(node, property, value) {
+  node[property] = value;
+  dispatch_dev('SvelteDOMSetProperty', {
+    node: node,
+    property: property,
+    value: value
+  });
+}
+
 function set_data_dev(text, data) {
   data = '' + data;
   if (text.wholeText === data) return;
@@ -1830,48 +1852,48 @@ const headerNavModel = [
         name: '指南',
         icon: guideIcon,
         url: 'guide/design',
-        description: '了解设计指南，帮助产品设计人员搭建逻辑清晰、结构合理且高效易用的产品。'
+        description: '了解设计指南，帮助产品设计人员搭建逻辑清晰、结构合理且高效易用的产品。',
     },
     {
         key: 'component',
         name: '组件',
         icon: componentIcon,
         url: 'component/installation',
-        description: '使用组件 Demo 快速体验交互细节；使用前端框架封装的代码帮助工程师快速开发。'
+        description: '使用组件 Demo 快速体验交互细节；使用前端框架封装的代码帮助工程师快速开发。',
     },
     {
         key: 'theme',
         name: '主题',
         icon: themeIcon,
         url: 'theme',
-        description: '在线主题编辑器，可视化定制和管理站点主题、组件样式。'
+        description: '在线主题编辑器，可视化定制和管理站点主题、组件样式。',
     },
     {
         key: 'resource',
         name: '资源',
         icon: resourceIcon,
         url: 'resource',
-        description: '下载相关资源，用其快速搭建页面原型或高保真视觉稿，提升产品设计效率。'
+        description: '下载相关资源，用其快速搭建页面原型或高保真视觉稿，提升产品设计效率。',
     },
 ];
 const componentNavModel = [
     {
         key: 'vue3',
-        name: "Element Plus",
+        name: 'Element Plus',
         url: 'https://element-plus.gitee.io/#/zh-CN',
-        target: '_blank'
+        target: '_blank',
     },
     {
         key: 'react',
-        name: "Element React",
+        name: 'Element React',
         url: 'https://elemefe.github.io/element-react',
-        target: '_blank'
+        target: '_blank',
     },
     {
         key: 'angular',
-        name: "Element Angular",
+        name: 'Element Angular',
         url: 'https://element-angular.faas.ele.me/guide/install',
-        target: '_blank'
+        target: '_blank',
     },
     {
         key: 'guide',
@@ -1880,29 +1902,29 @@ const componentNavModel = [
             {
                 key: 'installation',
                 name: '安装',
-                url: 'component/installation'
+                url: 'component/installation',
             },
             {
                 key: 'quickstart',
                 name: '快速上手',
-                url: 'component/quickstart'
+                url: 'component/quickstart',
             },
             {
                 key: 'i18n',
                 name: '国际化',
-                url: 'component/i18n'
+                url: 'component/i18n',
             },
             {
                 key: 'custom-theme',
                 name: '自定义主题',
-                url: 'component/custom-theme'
+                url: 'component/custom-theme',
             },
             {
                 key: 'transition',
                 name: '内置过渡动画',
-                url: 'component/transition'
+                url: 'component/transition',
             },
-        ]
+        ],
     },
     {
         key: 'component',
@@ -1915,52 +1937,52 @@ const componentNavModel = [
                     {
                         key: 'layout',
                         name: 'Layout 布局',
-                        url: 'component/layout'
+                        url: 'component/layout',
                     },
                     {
                         key: 'container',
                         name: 'Container 布局容器',
-                        url: 'component/container'
+                        url: 'component/container',
                     },
                     {
                         key: 'color',
                         name: 'Color 色彩',
-                        url: 'component/color'
+                        url: 'component/color',
                     },
                     {
                         key: 'typography',
                         name: 'Typography 字体',
-                        url: 'component/typography'
+                        url: 'component/typography',
                     },
                     {
                         key: 'border',
                         name: 'Border 边框',
-                        url: 'component/border'
+                        url: 'component/border',
                     },
                     {
                         key: 'icon',
                         name: 'Icon 图标',
-                        url: 'component/icon'
+                        url: 'component/icon',
                     },
                     {
                         key: 'button',
                         name: 'Button 按钮',
-                        url: 'component/button'
+                        url: 'component/button',
                     },
                     {
                         key: 'link',
                         name: 'Link 文字链接',
-                        url: 'component/link'
+                        url: 'component/link',
                     },
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
 ];
 // 数组降维
 const flattenDeep = (data) => {
     let list = [];
-    for (let item of data) {
+    for (const item of data) {
         if (isUndef(item === null || item === void 0 ? void 0 : item.children)) {
             list.push(item);
         }
@@ -1973,9 +1995,9 @@ const flattenDeep = (data) => {
 // 获取相邻页面
 const getBrotherPage = (key) => {
     const list = flattenDeep(componentNavModel);
-    const i = list.findIndex(item => item.key === key);
+    const i = list.findIndex((item) => item.key === key);
     let prev = list[i - 1];
-    let next = list[i + 1];
+    const next = list[i + 1];
     // 若为外链，则不需要展示
     prev = isUndef(prev === null || prev === void 0 ? void 0 : prev.target) ? prev : undefined;
     return [prev, next];
@@ -1985,38 +2007,38 @@ const githubBaseUrl = 'https://github.com/PingTouG/element-svelte';
 const linksModel = [
     {
         name: '代码仓库',
-        url: githubBaseUrl
+        url: githubBaseUrl,
     },
     {
         name: '更新日志',
-        url: `${githubBaseUrl}/releases`
+        url: `${githubBaseUrl}/releases`,
     },
     {
         name: 'Element-Vue',
-        url: 'https://github.com/ElemeFE/elementt'
+        url: 'https://github.com/ElemeFE/elementt',
     },
     {
         name: 'Element-Plus(Vue3.x)',
-        url: 'https://github.com/element-plus/element-plus'
+        url: 'https://github.com/element-plus/element-plus',
     },
     {
         name: 'Element-React',
-        url: 'https://github.com/elemefe/element-react'
+        url: 'https://github.com/elemefe/element-react',
     },
     {
         name: 'Element-Angular',
-        url: 'https://github.com/ElemeFE/element-angular'
-    }
+        url: 'https://github.com/ElemeFE/element-angular',
+    },
 ];
 const communityModel = [
     {
         name: '反馈建议',
-        url: `${githubBaseUrl}/issues`
+        url: `${githubBaseUrl}/issues`,
     },
     {
         name: 'SegmentFault',
-        url: 'https://segmentfault.com/t/element-ui'
-    }
+        url: 'https://segmentfault.com/t/element-ui',
+    },
 ];
 
 function _classCallCheck(instance, Constructor) {
@@ -2206,7 +2228,7 @@ function create_fragment$3(ctx) {
       ctx[0] ? "color: ".concat(
       /*color*/
       ctx[0], ";") : ""));
-      add_location(i, file$2, 5, 0, 107);
+      add_location(i, file$2, 5, 0, 93);
     },
     m: function mount(target, anchor) {
       insert_dev(target, i, anchor);
@@ -2258,8 +2280,7 @@ function instance$3($$self, $$props, $$invalidate) {
       slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
       $$props.$$scope;
   validate_slots("Icon", slots, []);
-  var _$$props$color = $$props.color,
-      color = _$$props$color === void 0 ? undefined : _$$props$color;
+  var color = $$props.color;
   var name = $$props.name;
   var _$$props$size = $$props.size,
       size = _$$props$size === void 0 ? "16px" : _$$props$size;
@@ -2321,6 +2342,12 @@ var Icon = /*#__PURE__*/function (_SvelteComponentDev) {
     var props = options.props || {};
 
     if (
+    /*color*/
+    ctx[0] === undefined && !("color" in props)) {
+      console.warn("<Icon> was created without expected prop 'color'");
+    }
+
+    if (
     /*name*/
     ctx[1] === undefined && !("name" in props)) {
       console.warn("<Icon> was created without expected prop 'name'");
@@ -2379,7 +2406,7 @@ function get_each_context_2(ctx, list, i) {
   var child_ctx = ctx.slice();
   child_ctx[8] = list[i];
   return child_ctx;
-} // (10:6) {#each headerNavModel as nav (nav.key)}
+} // (10:3) {#each headerNavModel as nav (nav.key)}
 
 
 function create_each_block_2(key_1, ctx) {
@@ -2419,7 +2446,7 @@ function create_each_block_2(key_1, ctx) {
       ctx[8].key : undefined);
       attr_dev(a, "href", /*nav*/
       ctx[8].url);
-      add_location(a, file$1, 10, 8, 339);
+      add_location(a, file$1, 10, 4, 320);
       this.first = a;
     },
     m: function mount(target, anchor) {
@@ -2449,7 +2476,7 @@ function create_each_block_2(key_1, ctx) {
     block: block,
     id: create_each_block_2.name,
     type: "each",
-    source: "(10:6) {#each headerNavModel as nav (nav.key)}",
+    source: "(10:3) {#each headerNavModel as nav (nav.key)}",
     ctx: ctx
   });
   return block;
@@ -2669,33 +2696,33 @@ function create_if_block$2(ctx) {
     },
     h: function hydrate() {
       attr_dev(h30, "class", "link__title svelte-nc2yiv");
-      add_location(h30, file$1, 27, 8, 689);
+      add_location(h30, file$1, 27, 4, 618);
       attr_dev(ul0, "class", "link__list");
-      add_location(ul0, file$1, 28, 8, 730);
+      add_location(ul0, file$1, 28, 4, 654);
       attr_dev(div0, "class", "links__item svelte-nc2yiv");
-      add_location(div0, file$1, 26, 6, 654);
+      add_location(div0, file$1, 26, 3, 588);
       attr_dev(h31, "class", "link__title svelte-nc2yiv");
-      add_location(h31, file$1, 37, 8, 1015);
+      add_location(h31, file$1, 37, 4, 889);
       attr_dev(ul1, "class", "link__list");
-      add_location(ul1, file$1, 38, 8, 1056);
+      add_location(ul1, file$1, 38, 4, 925);
       attr_dev(div1, "class", "links__item svelte-nc2yiv");
-      add_location(div1, file$1, 36, 6, 980);
+      add_location(div1, file$1, 36, 3, 859);
       attr_dev(div2, "class", "links svelte-nc2yiv");
-      add_location(div2, file$1, 25, 4, 627);
+      add_location(div2, file$1, 25, 2, 565);
       attr_dev(h32, "class", "icon__title svelte-nc2yiv");
-      add_location(h32, file$1, 48, 6, 1346);
+      add_location(h32, file$1, 48, 3, 1164);
       attr_dev(span, "class", "icon__item svelte-nc2yiv");
-      add_location(span, file$1, 50, 8, 1437);
+      add_location(span, file$1, 50, 4, 1246);
       attr_dev(a, "href", githubBaseUrl);
       attr_dev(a, "target", "_blank");
       attr_dev(a, "class", "icon__item svelte-nc2yiv");
-      add_location(a, file$1, 53, 8, 1538);
+      add_location(a, file$1, 53, 4, 1331);
       attr_dev(div3, "class", "icon__list svelte-nc2yiv");
-      add_location(div3, file$1, 49, 6, 1403);
+      add_location(div3, file$1, 49, 3, 1217);
       attr_dev(div4, "class", "icon");
-      add_location(div4, file$1, 47, 4, 1320);
+      add_location(div4, file$1, 47, 2, 1142);
       attr_dev(footer, "class", "svelte-nc2yiv");
-      add_location(footer, file$1, 24, 2, 613);
+      add_location(footer, file$1, 24, 1, 554);
     },
     m: function mount(target, anchor) {
       insert_dev(target, footer, anchor);
@@ -2787,7 +2814,7 @@ function create_if_block$2(ctx) {
     ctx: ctx
   });
   return block;
-} // (30:10) {#each linksModel as item (item.url)}
+} // (30:5) {#each linksModel as item (item.url)}
 
 
 function create_each_block_1(key_1, ctx) {
@@ -2830,9 +2857,9 @@ function create_each_block_1(key_1, ctx) {
       ctx[3].url);
       attr_dev(a, "target", "_blank");
       attr_dev(a, "class", "svelte-nc2yiv");
-      add_location(a, file$1, 31, 14, 855);
+      add_location(a, file$1, 31, 7, 758);
       attr_dev(li, "class", "link__item svelte-nc2yiv");
-      add_location(li, file$1, 30, 12, 816);
+      add_location(li, file$1, 30, 6, 727);
       this.first = li;
     },
     m: function mount(target, anchor) {
@@ -2852,11 +2879,11 @@ function create_each_block_1(key_1, ctx) {
     block: block,
     id: create_each_block_1.name,
     type: "each",
-    source: "(30:10) {#each linksModel as item (item.url)}",
+    source: "(30:5) {#each linksModel as item (item.url)}",
     ctx: ctx
   });
   return block;
-} // (40:10) {#each communityModel as item (item.url)}
+} // (40:5) {#each communityModel as item (item.url)}
 
 
 function create_each_block(key_1, ctx) {
@@ -2899,9 +2926,9 @@ function create_each_block(key_1, ctx) {
       ctx[3].url);
       attr_dev(a, "target", "_blank");
       attr_dev(a, "class", "svelte-nc2yiv");
-      add_location(a, file$1, 41, 14, 1185);
+      add_location(a, file$1, 41, 7, 1033);
       attr_dev(li, "class", "link__item svelte-nc2yiv");
-      add_location(li, file$1, 40, 12, 1146);
+      add_location(li, file$1, 40, 6, 1002);
       this.first = li;
     },
     m: function mount(target, anchor) {
@@ -2921,7 +2948,7 @@ function create_each_block(key_1, ctx) {
     block: block,
     id: create_each_block.name,
     type: "each",
-    source: "(40:10) {#each communityModel as item (item.url)}",
+    source: "(40:5) {#each communityModel as item (item.url)}",
     ctx: ctx
   });
   return block;
@@ -3033,15 +3060,15 @@ function create_fragment$2(ctx) {
     h: function hydrate() {
       attr_dev(a, "class", "logo svelte-nc2yiv");
       attr_dev(a, "href", "./");
-      add_location(a, file$1, 7, 4, 216);
+      add_location(a, file$1, 7, 2, 209);
       attr_dev(nav, "class", "nav svelte-nc2yiv");
-      add_location(nav, file$1, 8, 4, 265);
+      add_location(nav, file$1, 8, 2, 255);
       attr_dev(header, "class", "svelte-nc2yiv");
-      add_location(header, file$1, 6, 2, 202);
+      add_location(header, file$1, 6, 1, 198);
       attr_dev(main, "class", "svelte-nc2yiv");
-      add_location(main, file$1, 18, 2, 533);
+      add_location(main, file$1, 18, 1, 484);
       attr_dev(section, "class", "svelte-nc2yiv");
-      add_location(section, file$1, 5, 0, 189);
+      add_location(section, file$1, 5, 0, 187);
     },
     m: function mount(target, anchor) {
       insert_dev(target, section, anchor);
@@ -3243,7 +3270,7 @@ function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeRefl
 
 function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var Error_1$1 = globals.Error;
-var file = "src\\routes\\_error.svelte"; // (12:2) {#if status === 404}
+var file = "src\\routes\\_error.svelte"; // (12:1) {#if status === 404}
 
 function create_if_block_1$1(ctx) {
   var img;
@@ -3268,7 +3295,7 @@ function create_if_block_1$1(ctx) {
       attr_dev(img, "alt", img_alt_value =
       /*error*/
       ctx[1].message);
-      add_location(img, file, 12, 4, 289);
+      add_location(img, file, 12, 2, 277);
     },
     m: function mount(target, anchor) {
       insert_dev(target, img, anchor);
@@ -3290,11 +3317,11 @@ function create_if_block_1$1(ctx) {
     block: block,
     id: create_if_block_1$1.name,
     type: "if",
-    source: "(12:2) {#if status === 404}",
+    source: "(12:1) {#if status === 404}",
     ctx: ctx
   });
   return block;
-} // (17:2) {#if dev && error.stack}
+} // (17:1) {#if dev && error.stack}
 
 
 function create_if_block$1(ctx) {
@@ -3317,7 +3344,7 @@ function create_if_block$1(ctx) {
       this.h();
     },
     h: function hydrate() {
-      add_location(pre, file, 17, 4, 430);
+      add_location(pre, file, 17, 2, 412);
     },
     m: function mount(target, anchor) {
       insert_dev(target, pre, anchor);
@@ -3338,7 +3365,7 @@ function create_if_block$1(ctx) {
     block: block,
     id: create_if_block$1.name,
     type: "if",
-    source: "(17:2) {#if dev && error.stack}",
+    source: "(17:1) {#if dev && error.stack}",
     ctx: ctx
   });
   return block;
@@ -3379,7 +3406,7 @@ function create_fragment$1(ctx) {
       this.h();
     },
     l: function claim(nodes) {
-      var head_nodes = query_selector_all("[data-svelte=\"svelte-1hr9sna\"]", document.head);
+      var head_nodes = query_selector_all("[data-svelte=\"svelte-wxzc6d\"]", document.head);
       head_nodes.forEach(detach_dev);
       t0 = claim_space(nodes);
       div = claim_element(nodes, "DIV", {
@@ -3398,9 +3425,9 @@ function create_fragment$1(ctx) {
       this.h();
     },
     h: function hydrate() {
-      add_location(p, file, 14, 2, 372);
-      attr_dev(div, "class", "container svelte-1js8nwj");
-      add_location(div, file, 10, 0, 236);
+      add_location(p, file, 14, 1, 360);
+      attr_dev(div, "class", "container svelte-potw0h");
+      add_location(div, file, 10, 0, 229);
     },
     m: function mount(target, anchor) {
       insert_dev(target, t0, anchor);
@@ -4330,31 +4357,35 @@ var App = /*#__PURE__*/function (_SvelteComponentDev) {
 var ignore = [/^\/component\/([^/]+?)\.json$/];
 var components = [{
   js: function js() {
-    return Promise.all([import('./index.a2380c1b.js'), __inject_styles(["client-2bf3ca07.css","index-c7b8bd9c.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.2b755552.js'), __inject_styles(["client-3e302934.css","index-c7b8bd9c.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./_layout.5def5f36.js'), __inject_styles(["client-2bf3ca07.css","_layout-ea1ea01e.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./_layout.b3118663.js'), __inject_styles(["client-3e302934.css","_layout-ea1ea01e.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./[page].126f3e78.js'), __inject_styles(["client-2bf3ca07.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./[page].e685a476.js'), __inject_styles(["client-3e302934.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./index.6bc008ee.js'), __inject_styles(["client-2bf3ca07.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.3e01a918.js'), __inject_styles(["client-3e302934.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./_layout.d503ceab.js'), __inject_styles(["client-2bf3ca07.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./_layout.f77cbe89.js'), __inject_styles(["client-3e302934.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./design.f5904c95.js'), __inject_styles(["client-2bf3ca07.css","design-10a68980.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./design.63a95049.js'), __inject_styles(["client-3e302934.css","design-10a68980.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./index.ee93554b.js'), __inject_styles(["client-2bf3ca07.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.0d9988d4.js'), __inject_styles(["client-3e302934.css"])]).then(function(x) { return x[0]; });
+  }
+}, {
+  js: function js() {
+    return Promise.all([import('./demo.0d5c6e89.js'), __inject_styles(["client-3e302934.css"])]).then(function(x) { return x[0]; });
   }
 }];
 var routes = function (d) {
@@ -4396,6 +4427,12 @@ var routes = function (d) {
     pattern: /^\/theme\/?$/,
     parts: [{
       i: 6
+    }]
+  }, {
+    // demo.svelte
+    pattern: /^\/demo\/?$/,
+    parts: [{
+      i: 7
     }]
   }];
 }(decodeURIComponent);
@@ -5283,9 +5320,9 @@ function hydrate_target(dest) {
 }
 
 start$1({
-    target: document.querySelector('#sapper')
+    target: document.querySelector('#sapper'),
 });
 
-export { update_keyed_each as A, noop as B, validate_slots as C, destroy_block as D, _createClass$1 as E, isUndef as F, create_slot as G, empty as H, prevent_default as I, set_data_dev as J, componentNavModel as K, toggle_class as L, update_slot as M, transition_in as N, transition_out as O, getBrotherPage as P, goto as Q, regenerator as R, SvelteComponentDev as S, _inherits$1 as _, _getPrototypeOf$1 as a, _possibleConstructorReturn$1 as b, _classCallCheck$1 as c, _assertThisInitialized$1 as d, dispatch_dev as e, add_render_callback as f, validate_each_keys as g, element as h, init$1 as i, space as j, claim_element as k, children as l, claim_space as m, claim_text as n, detach_dev as o, attr_dev as p, add_location as q, insert_dev as r, safe_not_equal as s, text as t, append_dev as u, validate_each_argument as v, headerNavModel as w, query_selector_all as x, listen_dev as y, _slicedToArray$1 as z };
+export { create_component as $, update_keyed_each as A, noop as B, validate_slots as C, destroy_block as D, _createClass$1 as E, isUndef as F, create_slot as G, empty as H, prevent_default as I, set_data_dev as J, componentNavModel as K, toggle_class as L, update_slot as M, transition_in as N, transition_out as O, getBrotherPage as P, goto as Q, regenerator as R, SvelteComponentDev as S, _inherits as T, _getPrototypeOf as U, _possibleConstructorReturn as V, _classCallCheck as W, _assertThisInitialized as X, _createClass as Y, Icon as Z, _inherits$1 as _, _getPrototypeOf$1 as a, claim_component as a0, mount_component as a1, destroy_component as a2, _slicedToArray as a3, group_outros as a4, check_outros as a5, prop_dev as a6, bubble as a7, _possibleConstructorReturn$1 as b, _classCallCheck$1 as c, _assertThisInitialized$1 as d, dispatch_dev as e, add_render_callback as f, validate_each_keys as g, element as h, init$1 as i, space as j, claim_element as k, children as l, claim_space as m, claim_text as n, detach_dev as o, attr_dev as p, add_location as q, insert_dev as r, safe_not_equal as s, text as t, append_dev as u, validate_each_argument as v, headerNavModel as w, query_selector_all as x, listen_dev as y, _slicedToArray$1 as z };
 
 import __inject_styles from './inject_styles.fe622066.js';
