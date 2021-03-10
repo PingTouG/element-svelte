@@ -1,0 +1,4 @@
+---
+headTitle: 内置过渡动画 | ElementSvelte
+title: 内置过渡动画
+---

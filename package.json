@@ -1,0 +1,67 @@
+{
+	"name": "element-svelte",
+	"version": "0.0.1",
+	"description": "基于`Svelte`实现的`ElementUI`",
+	"main": "lib/element-svelte.cjs.js",
+	"module": "lib/element-svelte.esm.js",
+	"browser": "lib/element-svelte.umd.js",
+	"scripts": {
+		"build": "rollup -c",
+		"dev": "cd site && npm run dev",
+		"build:site": "cd site && npm run build",
+		"export:site": "cd site && npm run export",
+		"start:site": "cd site && npm run start",
+		"validate:site": "cd site && npm run validate",
+		"format": "prettier --plugin=./node_modules/prettier-plugin-svelte --check .",
+		"format-fix": "prettier --plugin=./node_modules/prettier-plugin-svelte --write .",
+		"postinstall": "patch-package",
+		"prepare": "husky install"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/PingTouG/element-svelte.git"
+	},
+	"keywords": [
+		"Svelte",
+		"UI",
+		"ElementUI"
+	],
+	"author": "PingTouG",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/PingTouG/element-svelte/issues"
+	},
+	"homepage": "https://github.com/PingTouG/element-svelte#readme",
+	"devDependencies": {
+		"@babel/core": "^7.13.8",
+		"@babel/preset-env": "^7.13.9",
+		"@rollup/plugin-commonjs": "^17.1.0",
+		"@rollup/plugin-node-resolve": "^11.2.0",
+		"@rollup/plugin-typescript": "^8.2.0",
+		"@tsconfig/svelte": "^1.0.10",
+		"@typescript-eslint/eslint-plugin": "^4.17.0",
+		"@typescript-eslint/parser": "^4.17.0",
+		"autoprefixer": "^10.2.4",
+		"eslint": "^7.21.0",
+		"eslint-config-prettier": "^8.1.0",
+		"eslint-plugin-prettier": "^3.3.1",
+		"eslint-plugin-svelte3": "3.1.0",
+		"eslint-svelte3-preprocess": "^0.0.5",
+		"husky": "^5.1.3",
+		"lint-staged": "^10.5.4",
+		"patch-package": "^6.4.6",
+		"postcss": "^8.2.6",
+		"prettier": "^2.2.1",
+		"prettier-plugin-svelte": "^2.2.0",
+		"rollup": "^2.40.0",
+		"rollup-plugin-css-only": "^3.1.0",
+		"rollup-plugin-svelte": "^7.1.0",
+		"rollup-plugin-terser": "^7.0.2",
+		"sass": "^1.32.8",
+		"svelte": "^3.35.0",
+		"svelte-check": "^1.2.3",
+		"svelte-preprocess": "^4.6.9",
+		"tslib": "^2.1.0",
+		"typescript": "^4.2.2"
+	}
+}
