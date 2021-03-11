@@ -1,9 +1,9 @@
-import { T as _inherits, U as _getPrototypeOf, V as _possibleConstructorReturn, W as _classCallCheck, i as init, s as safe_not_equal, X as _assertThisInitialized, e as dispatch_dev, Y as _createClass, S as SvelteComponentDev, G as create_slot, C as validate_slots, Z as Icon, h as element, k as claim_element, l as children, o as detach_dev, p as attr_dev, q as add_location, r as insert_dev, $ as create_component, a0 as claim_component, a1 as mount_component, N as transition_in, O as transition_out, a2 as destroy_component, j as space, m as claim_space, u as append_dev, y as listen_dev, a3 as _slicedToArray, a4 as group_outros, a5 as check_outros, M as update_slot, a6 as prop_dev, a7 as bubble, _ as _inherits$1, a as _getPrototypeOf$1, b as _possibleConstructorReturn$1, c as _classCallCheck$1, d as _assertThisInitialized$1, t as text, n as claim_text, z as _slicedToArray$1 } from './client.829d994e.js';
+import { T as _inherits, U as _getPrototypeOf, V as _possibleConstructorReturn, W as _classCallCheck, i as init, s as safe_not_equal, X as _assertThisInitialized, e as dispatch_dev, Y as _createClass, S as SvelteComponentDev, G as create_slot, C as validate_slots, Z as Icon, h as element, k as claim_element, l as children, o as detach_dev, p as attr_dev, q as add_location, r as insert_dev, $ as create_component, a0 as claim_component, a1 as mount_component, N as transition_in, O as transition_out, a2 as destroy_component, j as space, m as claim_space, L as toggle_class, u as append_dev, y as listen_dev, a3 as _slicedToArray, a4 as group_outros, a5 as check_outros, M as update_slot, a6 as prop_dev, a7 as bubble, _ as _inherits$1, a as _getPrototypeOf$1, b as _possibleConstructorReturn$1, c as _classCallCheck$1, d as _assertThisInitialized$1, t as text, n as claim_text, z as _slicedToArray$1 } from './client.9568ff78.js';
 
-function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-var file$1 = "..\\packages\\Button\\index.svelte"; // (27:1) {#if loading}
+function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var file$2 = "..\\packages\\Button\\Button.svelte"; // (25:1) {#if loading}
 
 function create_if_block_1(ctx) {
   var span;
@@ -14,16 +14,14 @@ function create_if_block_1(ctx) {
     },
     l: function claim(nodes) {
       span = claim_element(nodes, "SPAN", {
-        "loading-icon": true,
         class: true
       });
       children(span).forEach(detach_dev);
       this.h();
     },
     h: function hydrate() {
-      attr_dev(span, "loading-icon", "");
-      attr_dev(span, "class", "svelte-aegfd0");
-      add_location(span, file$1, 27, 2, 522);
+      attr_dev(span, "class", "loading-icon");
+      add_location(span, file$2, 25, 2, 496);
     },
     m: function mount(target, anchor) {
       insert_dev(target, span, anchor);
@@ -36,11 +34,11 @@ function create_if_block_1(ctx) {
     block: block_1,
     id: create_if_block_1.name,
     type: "if",
-    source: "(27:1) {#if loading}",
+    source: "(25:1) {#if loading}",
     ctx: ctx
   });
   return block_1;
-} // (30:1) {#if icon}
+} // (28:1) {#if icon}
 
 
 function create_if_block(ctx) {
@@ -91,16 +89,17 @@ function create_if_block(ctx) {
     block: block_1,
     id: create_if_block.name,
     type: "if",
-    source: "(30:1) {#if icon}",
+    source: "(28:1) {#if icon}",
     ctx: ctx
   });
   return block_1;
 }
 
-function create_fragment$1(ctx) {
+function create_fragment$2(ctx) {
   var button;
   var t0;
   var t1;
+  var button_class_value;
   var current;
   var mounted;
   var dispose;
@@ -129,13 +128,6 @@ function create_fragment$1(ctx) {
     l: function claim(nodes) {
       button = claim_element(nodes, "BUTTON", {
         class: true,
-        "es-block": true,
-        "es-circle": true,
-        "es-loading": true,
-        "es-plain": true,
-        "es-round": true,
-        "es-size": true,
-        "es-type": true,
         disabled: true,
         type: true
       });
@@ -149,35 +141,37 @@ function create_fragment$1(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(button, "class", "es-button svelte-aegfd0");
-      attr_dev(button, "es-block",
-      /*block*/
-      ctx[0]);
-      attr_dev(button, "es-circle",
-      /*circle*/
-      ctx[1]);
-      attr_dev(button, "es-loading",
-      /*loading*/
-      ctx[4]);
-      attr_dev(button, "es-plain",
-      /*plain*/
-      ctx[6]);
-      attr_dev(button, "es-round",
-      /*round*/
-      ctx[7]);
-      attr_dev(button, "es-size",
+      attr_dev(button, "class", button_class_value = "es-button " + (
       /*size*/
-      ctx[8]);
-      attr_dev(button, "es-type",
+      ctx[8] ?
+      /*size*/
+      ctx[8] : "") + " " + (
       /*type*/
-      ctx[9]);
+      ctx[9] ? "type-".concat(
+      /*type*/
+      ctx[9]) : ""));
       button.disabled =
       /*disabled*/
       ctx[2];
       attr_dev(button, "type",
       /*nativeType*/
       ctx[5]);
-      add_location(button, file$1, 13, 0, 280);
+      toggle_class(button, "block",
+      /*block*/
+      ctx[0]);
+      toggle_class(button, "circle",
+      /*circle*/
+      ctx[1]);
+      toggle_class(button, "loading",
+      /*loading*/
+      ctx[4]);
+      toggle_class(button, "plain",
+      /*plain*/
+      ctx[6]);
+      toggle_class(button, "round",
+      /*round*/
+      ctx[7]);
+      add_location(button, file$2, 13, 0, 280);
     },
     m: function mount(target, anchor) {
       insert_dev(target, button, anchor);
@@ -252,59 +246,17 @@ function create_fragment$1(ctx) {
       }
 
       if (!current || dirty &
-      /*block*/
-      1) {
-        attr_dev(button, "es-block",
-        /*block*/
-        ctx[0]);
-      }
-
-      if (!current || dirty &
-      /*circle*/
-      2) {
-        attr_dev(button, "es-circle",
-        /*circle*/
-        ctx[1]);
-      }
-
-      if (!current || dirty &
-      /*loading*/
-      16) {
-        attr_dev(button, "es-loading",
-        /*loading*/
-        ctx[4]);
-      }
-
-      if (!current || dirty &
-      /*plain*/
-      64) {
-        attr_dev(button, "es-plain",
-        /*plain*/
-        ctx[6]);
-      }
-
-      if (!current || dirty &
-      /*round*/
-      128) {
-        attr_dev(button, "es-round",
-        /*round*/
-        ctx[7]);
-      }
-
-      if (!current || dirty &
+      /*size, type*/
+      768 && button_class_value !== (button_class_value = "es-button " + (
       /*size*/
-      256) {
-        attr_dev(button, "es-size",
-        /*size*/
-        ctx[8]);
-      }
-
-      if (!current || dirty &
+      ctx[8] ?
+      /*size*/
+      ctx[8] : "") + " " + (
       /*type*/
-      512) {
-        attr_dev(button, "es-type",
-        /*type*/
-        ctx[9]);
+      ctx[9] ? "type-".concat(
+      /*type*/
+      ctx[9]) : ""))) {
+        attr_dev(button, "class", button_class_value);
       }
 
       if (!current || dirty &
@@ -321,6 +273,46 @@ function create_fragment$1(ctx) {
         attr_dev(button, "type",
         /*nativeType*/
         ctx[5]);
+      }
+
+      if (dirty &
+      /*size, type, block*/
+      769) {
+        toggle_class(button, "block",
+        /*block*/
+        ctx[0]);
+      }
+
+      if (dirty &
+      /*size, type, circle*/
+      770) {
+        toggle_class(button, "circle",
+        /*circle*/
+        ctx[1]);
+      }
+
+      if (dirty &
+      /*size, type, loading*/
+      784) {
+        toggle_class(button, "loading",
+        /*loading*/
+        ctx[4]);
+      }
+
+      if (dirty &
+      /*size, type, plain*/
+      832) {
+        toggle_class(button, "plain",
+        /*plain*/
+        ctx[6]);
+      }
+
+      if (dirty &
+      /*size, type, round*/
+      896) {
+        toggle_class(button, "round",
+        /*round*/
+        ctx[7]);
       }
     },
     i: function intro(local) {
@@ -345,7 +337,7 @@ function create_fragment$1(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block_1,
-    id: create_fragment$1.name,
+    id: create_fragment$2.name,
     type: "component",
     source: "",
     ctx: ctx
@@ -353,7 +345,7 @@ function create_fragment$1(ctx) {
   return block_1;
 }
 
-function instance$1($$self, $$props, $$invalidate) {
+function instance$2($$self, $$props, $$invalidate) {
   var _$$props$$$slots = $$props.$$slots,
       slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
       $$scope = $$props.$$scope;
@@ -431,7 +423,7 @@ function instance$1($$self, $$props, $$invalidate) {
 var Button = /*#__PURE__*/function (_SvelteComponentDev) {
   _inherits(Button, _SvelteComponentDev);
 
-  var _super = _createSuper$1(Button);
+  var _super = _createSuper$2(Button);
 
   function Button(options) {
     var _this;
@@ -439,7 +431,7 @@ var Button = /*#__PURE__*/function (_SvelteComponentDev) {
     _classCallCheck(this, Button);
 
     _this = _super.call(this, options);
-    init(_assertThisInitialized(_this), options, instance$1, create_fragment$1, safe_not_equal, {
+    init(_assertThisInitialized(_this), options, instance$2, create_fragment$2, safe_not_equal, {
       block: 0,
       circle: 1,
       disabled: 2,
@@ -455,7 +447,7 @@ var Button = /*#__PURE__*/function (_SvelteComponentDev) {
       component: _assertThisInitialized(_this),
       tagName: "Button",
       options: options,
-      id: create_fragment$1.name
+      id: create_fragment$2.name
     });
     var ctx = _this.$$.ctx;
     var props = options.props || {};
@@ -602,12 +594,133 @@ var Button = /*#__PURE__*/function (_SvelteComponentDev) {
   return Button;
 }(SvelteComponentDev);
 
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var file$1 = "..\\packages\\Button\\ButtonGroup.svelte";
+
+function create_fragment$1(ctx) {
+  var div;
+  var current;
+  var default_slot_template =
+  /*#slots*/
+  ctx[1].default;
+  var default_slot = create_slot(default_slot_template, ctx,
+  /*$$scope*/
+  ctx[0], null);
+  var block = {
+    c: function create() {
+      div = element("div");
+      if (default_slot) default_slot.c();
+      this.h();
+    },
+    l: function claim(nodes) {
+      div = claim_element(nodes, "DIV", {
+        class: true
+      });
+      var div_nodes = children(div);
+      if (default_slot) default_slot.l(div_nodes);
+      div_nodes.forEach(detach_dev);
+      this.h();
+    },
+    h: function hydrate() {
+      attr_dev(div, "class", "es-button-group");
+      add_location(div, file$1, 0, 0, 0);
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, div, anchor);
+
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+
+      current = true;
+    },
+    p: function update(ctx, _ref) {
+      var _ref2 = _slicedToArray(_ref, 1),
+          dirty = _ref2[0];
+
+      if (default_slot) {
+        if (default_slot.p && dirty &
+        /*$$scope*/
+        1) {
+          update_slot(default_slot, default_slot_template, ctx,
+          /*$$scope*/
+          ctx[0], dirty, null, null);
+        }
+      }
+    },
+    i: function intro(local) {
+      if (current) return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o: function outro(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(div);
+      if (default_slot) default_slot.d(detaching);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_fragment$1.name,
+    type: "component",
+    source: "",
+    ctx: ctx
+  });
+  return block;
+}
+
+function instance$1($$self, $$props, $$invalidate) {
+  var _$$props$$$slots = $$props.$$slots,
+      slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
+      $$scope = $$props.$$scope;
+  validate_slots("ButtonGroup", slots, ['default']);
+  var writable_props = [];
+  Object.keys($$props).forEach(function (key) {
+    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<ButtonGroup> was created with unknown prop '".concat(key, "'"));
+  });
+
+  $$self.$$set = function ($$props) {
+    if ("$$scope" in $$props) $$invalidate(0, $$scope = $$props.$$scope);
+  };
+
+  return [$$scope, slots];
+}
+
+var ButtonGroup = /*#__PURE__*/function (_SvelteComponentDev) {
+  _inherits(ButtonGroup, _SvelteComponentDev);
+
+  var _super = _createSuper$1(ButtonGroup);
+
+  function ButtonGroup(options) {
+    var _this;
+
+    _classCallCheck(this, ButtonGroup);
+
+    _this = _super.call(this, options);
+    init(_assertThisInitialized(_this), options, instance$1, create_fragment$1, safe_not_equal, {});
+    dispatch_dev("SvelteRegisterComponent", {
+      component: _assertThisInitialized(_this),
+      tagName: "ButtonGroup",
+      options: options,
+      id: create_fragment$1.name
+    });
+    return _this;
+  }
+
+  return ButtonGroup;
+}(SvelteComponentDev);
+
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf$1(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$1(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var file = "src\\routes\\demo.svelte"; // (7:1) <Button block>
 
-function create_default_slot_25(ctx) {
+function create_default_slot_34(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -625,7 +738,7 @@ function create_default_slot_25(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_25.name,
+    id: create_default_slot_34.name,
     type: "slot",
     source: "(7:1) <Button block>",
     ctx: ctx
@@ -634,7 +747,7 @@ function create_default_slot_25(ctx) {
 } // (22:1) <Button disabled>
 
 
-function create_default_slot_24(ctx) {
+function create_default_slot_33(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -652,7 +765,7 @@ function create_default_slot_24(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_24.name,
+    id: create_default_slot_33.name,
     type: "slot",
     source: "(22:1) <Button disabled>",
     ctx: ctx
@@ -661,7 +774,7 @@ function create_default_slot_24(ctx) {
 } // (23:1) <Button disabled type="primary">
 
 
-function create_default_slot_23(ctx) {
+function create_default_slot_32(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -679,7 +792,7 @@ function create_default_slot_23(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_23.name,
+    id: create_default_slot_32.name,
     type: "slot",
     source: "(23:1) <Button disabled type=\\\"primary\\\">",
     ctx: ctx
@@ -688,7 +801,7 @@ function create_default_slot_23(ctx) {
 } // (24:1) <Button disabled type="success">
 
 
-function create_default_slot_22(ctx) {
+function create_default_slot_31(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -706,7 +819,7 @@ function create_default_slot_22(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_22.name,
+    id: create_default_slot_31.name,
     type: "slot",
     source: "(24:1) <Button disabled type=\\\"success\\\">",
     ctx: ctx
@@ -715,7 +828,7 @@ function create_default_slot_22(ctx) {
 } // (25:1) <Button disabled type="error">
 
 
-function create_default_slot_21(ctx) {
+function create_default_slot_30(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -733,7 +846,7 @@ function create_default_slot_21(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_21.name,
+    id: create_default_slot_30.name,
     type: "slot",
     source: "(25:1) <Button disabled type=\\\"error\\\">",
     ctx: ctx
@@ -742,7 +855,7 @@ function create_default_slot_21(ctx) {
 } // (26:1) <Button disabled type="warning">
 
 
-function create_default_slot_20(ctx) {
+function create_default_slot_29(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -760,7 +873,7 @@ function create_default_slot_20(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_20.name,
+    id: create_default_slot_29.name,
     type: "slot",
     source: "(26:1) <Button disabled type=\\\"warning\\\">",
     ctx: ctx
@@ -769,7 +882,7 @@ function create_default_slot_20(ctx) {
 } // (27:1) <Button disabled type="info">
 
 
-function create_default_slot_19(ctx) {
+function create_default_slot_28(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -787,7 +900,7 @@ function create_default_slot_19(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_19.name,
+    id: create_default_slot_28.name,
     type: "slot",
     source: "(27:1) <Button disabled type=\\\"info\\\">",
     ctx: ctx
@@ -796,7 +909,7 @@ function create_default_slot_19(ctx) {
 } // (32:1) <Button loading>
 
 
-function create_default_slot_18(ctx) {
+function create_default_slot_27(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -814,7 +927,7 @@ function create_default_slot_18(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_18.name,
+    id: create_default_slot_27.name,
     type: "slot",
     source: "(32:1) <Button loading>",
     ctx: ctx
@@ -823,7 +936,7 @@ function create_default_slot_18(ctx) {
 } // (38:1) <Button plain>
 
 
-function create_default_slot_17(ctx) {
+function create_default_slot_26(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -841,7 +954,7 @@ function create_default_slot_17(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_17.name,
+    id: create_default_slot_26.name,
     type: "slot",
     source: "(38:1) <Button plain>",
     ctx: ctx
@@ -850,7 +963,7 @@ function create_default_slot_17(ctx) {
 } // (39:1) <Button plain type="primary">
 
 
-function create_default_slot_16(ctx) {
+function create_default_slot_25(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -868,7 +981,7 @@ function create_default_slot_16(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_16.name,
+    id: create_default_slot_25.name,
     type: "slot",
     source: "(39:1) <Button plain type=\\\"primary\\\">",
     ctx: ctx
@@ -877,7 +990,7 @@ function create_default_slot_16(ctx) {
 } // (40:1) <Button plain type="success">
 
 
-function create_default_slot_15(ctx) {
+function create_default_slot_24(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -895,7 +1008,7 @@ function create_default_slot_15(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_15.name,
+    id: create_default_slot_24.name,
     type: "slot",
     source: "(40:1) <Button plain type=\\\"success\\\">",
     ctx: ctx
@@ -904,7 +1017,7 @@ function create_default_slot_15(ctx) {
 } // (41:1) <Button plain type="error">
 
 
-function create_default_slot_14(ctx) {
+function create_default_slot_23(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -922,7 +1035,7 @@ function create_default_slot_14(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_14.name,
+    id: create_default_slot_23.name,
     type: "slot",
     source: "(41:1) <Button plain type=\\\"error\\\">",
     ctx: ctx
@@ -931,7 +1044,7 @@ function create_default_slot_14(ctx) {
 } // (42:1) <Button plain type="warning">
 
 
-function create_default_slot_13(ctx) {
+function create_default_slot_22(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -949,7 +1062,7 @@ function create_default_slot_13(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_13.name,
+    id: create_default_slot_22.name,
     type: "slot",
     source: "(42:1) <Button plain type=\\\"warning\\\">",
     ctx: ctx
@@ -958,7 +1071,7 @@ function create_default_slot_13(ctx) {
 } // (43:1) <Button plain type="info">
 
 
-function create_default_slot_12(ctx) {
+function create_default_slot_21(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -976,16 +1089,16 @@ function create_default_slot_12(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_12.name,
+    id: create_default_slot_21.name,
     type: "slot",
     source: "(43:1) <Button plain type=\\\"info\\\">",
     ctx: ctx
   });
   return block;
-} // (49:1) <Button size="mini">
+} // (49:1) <Button size="mini" type="primary">
 
 
-function create_default_slot_11(ctx) {
+function create_default_slot_20(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1003,16 +1116,16 @@ function create_default_slot_11(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_11.name,
+    id: create_default_slot_20.name,
     type: "slot",
-    source: "(49:1) <Button size=\\\"mini\\\">",
+    source: "(49:1) <Button size=\\\"mini\\\" type=\\\"primary\\\">",
     ctx: ctx
   });
   return block;
-} // (50:1) <Button>
+} // (50:1) <Button type="primary">
 
 
-function create_default_slot_10(ctx) {
+function create_default_slot_19(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1030,16 +1143,16 @@ function create_default_slot_10(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_10.name,
+    id: create_default_slot_19.name,
     type: "slot",
-    source: "(50:1) <Button>",
+    source: "(50:1) <Button type=\\\"primary\\\">",
     ctx: ctx
   });
   return block;
-} // (51:1) <Button size="medium">
+} // (51:1) <Button size="medium" type="primary">
 
 
-function create_default_slot_9(ctx) {
+function create_default_slot_18(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1057,16 +1170,16 @@ function create_default_slot_9(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_9.name,
+    id: create_default_slot_18.name,
     type: "slot",
-    source: "(51:1) <Button size=\\\"medium\\\">",
+    source: "(51:1) <Button size=\\\"medium\\\" type=\\\"primary\\\">",
     ctx: ctx
   });
   return block;
-} // (52:1) <Button size="large">
+} // (52:1) <Button size="large" type="primary">
 
 
-function create_default_slot_8(ctx) {
+function create_default_slot_17(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1084,16 +1197,16 @@ function create_default_slot_8(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_8.name,
+    id: create_default_slot_17.name,
     type: "slot",
-    source: "(52:1) <Button size=\\\"large\\\">",
+    source: "(52:1) <Button size=\\\"large\\\" type=\\\"primary\\\">",
     ctx: ctx
   });
   return block;
 } // (58:1) <Button>
 
 
-function create_default_slot_7(ctx) {
+function create_default_slot_16(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1111,7 +1224,7 @@ function create_default_slot_7(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_7.name,
+    id: create_default_slot_16.name,
     type: "slot",
     source: "(58:1) <Button>",
     ctx: ctx
@@ -1120,7 +1233,7 @@ function create_default_slot_7(ctx) {
 } // (59:1) <Button type="primary">
 
 
-function create_default_slot_6(ctx) {
+function create_default_slot_15(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1138,7 +1251,7 @@ function create_default_slot_6(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_6.name,
+    id: create_default_slot_15.name,
     type: "slot",
     source: "(59:1) <Button type=\\\"primary\\\">",
     ctx: ctx
@@ -1147,7 +1260,7 @@ function create_default_slot_6(ctx) {
 } // (60:1) <Button type="success">
 
 
-function create_default_slot_5(ctx) {
+function create_default_slot_14(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1165,7 +1278,7 @@ function create_default_slot_5(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_5.name,
+    id: create_default_slot_14.name,
     type: "slot",
     source: "(60:1) <Button type=\\\"success\\\">",
     ctx: ctx
@@ -1174,7 +1287,7 @@ function create_default_slot_5(ctx) {
 } // (61:1) <Button type="error">
 
 
-function create_default_slot_4(ctx) {
+function create_default_slot_13(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1192,7 +1305,7 @@ function create_default_slot_4(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_4.name,
+    id: create_default_slot_13.name,
     type: "slot",
     source: "(61:1) <Button type=\\\"error\\\">",
     ctx: ctx
@@ -1201,7 +1314,7 @@ function create_default_slot_4(ctx) {
 } // (62:1) <Button type="warning">
 
 
-function create_default_slot_3(ctx) {
+function create_default_slot_12(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1219,7 +1332,7 @@ function create_default_slot_3(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_3.name,
+    id: create_default_slot_12.name,
     type: "slot",
     source: "(62:1) <Button type=\\\"warning\\\">",
     ctx: ctx
@@ -1228,7 +1341,7 @@ function create_default_slot_3(ctx) {
 } // (63:1) <Button type="info">
 
 
-function create_default_slot_2(ctx) {
+function create_default_slot_11(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1246,7 +1359,7 @@ function create_default_slot_2(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_default_slot_2.name,
+    id: create_default_slot_11.name,
     type: "slot",
     source: "(63:1) <Button type=\\\"info\\\">",
     ctx: ctx
@@ -1255,7 +1368,7 @@ function create_default_slot_2(ctx) {
 } // (69:1) <Button type="text">
 
 
-function create_default_slot_1(ctx) {
+function create_default_slot_10(ctx) {
   var t;
   var block = {
     c: function create() {
@@ -1263,6 +1376,249 @@ function create_default_slot_1(ctx) {
     },
     l: function claim(nodes) {
       t = claim_text(nodes, "文字按钮");
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, t, anchor);
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(t);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_default_slot_10.name,
+    type: "slot",
+    source: "(69:1) <Button type=\\\"text\\\">",
+    ctx: ctx
+  });
+  return block;
+} // (70:1) <Button type="text" disabled>
+
+
+function create_default_slot_9(ctx) {
+  var t;
+  var block = {
+    c: function create() {
+      t = text("文字按钮");
+    },
+    l: function claim(nodes) {
+      t = claim_text(nodes, "文字按钮");
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, t, anchor);
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(t);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_default_slot_9.name,
+    type: "slot",
+    source: "(70:1) <Button type=\\\"text\\\" disabled>",
+    ctx: ctx
+  });
+  return block;
+} // (76:1) <Button round>
+
+
+function create_default_slot_8(ctx) {
+  var t;
+  var block = {
+    c: function create() {
+      t = text("默认按钮");
+    },
+    l: function claim(nodes) {
+      t = claim_text(nodes, "默认按钮");
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, t, anchor);
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(t);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_default_slot_8.name,
+    type: "slot",
+    source: "(76:1) <Button round>",
+    ctx: ctx
+  });
+  return block;
+} // (77:1) <Button round type="primary">
+
+
+function create_default_slot_7(ctx) {
+  var t;
+  var block = {
+    c: function create() {
+      t = text("主要按钮");
+    },
+    l: function claim(nodes) {
+      t = claim_text(nodes, "主要按钮");
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, t, anchor);
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(t);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_default_slot_7.name,
+    type: "slot",
+    source: "(77:1) <Button round type=\\\"primary\\\">",
+    ctx: ctx
+  });
+  return block;
+} // (78:1) <Button round type="success">
+
+
+function create_default_slot_6(ctx) {
+  var t;
+  var block = {
+    c: function create() {
+      t = text("成功按钮");
+    },
+    l: function claim(nodes) {
+      t = claim_text(nodes, "成功按钮");
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, t, anchor);
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(t);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_default_slot_6.name,
+    type: "slot",
+    source: "(78:1) <Button round type=\\\"success\\\">",
+    ctx: ctx
+  });
+  return block;
+} // (79:1) <Button round type="error">
+
+
+function create_default_slot_5(ctx) {
+  var t;
+  var block = {
+    c: function create() {
+      t = text("错误按钮");
+    },
+    l: function claim(nodes) {
+      t = claim_text(nodes, "错误按钮");
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, t, anchor);
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(t);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_default_slot_5.name,
+    type: "slot",
+    source: "(79:1) <Button round type=\\\"error\\\">",
+    ctx: ctx
+  });
+  return block;
+} // (80:1) <Button round type="warning">
+
+
+function create_default_slot_4(ctx) {
+  var t;
+  var block = {
+    c: function create() {
+      t = text("警告按钮");
+    },
+    l: function claim(nodes) {
+      t = claim_text(nodes, "警告按钮");
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, t, anchor);
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(t);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_default_slot_4.name,
+    type: "slot",
+    source: "(80:1) <Button round type=\\\"warning\\\">",
+    ctx: ctx
+  });
+  return block;
+} // (81:1) <Button round type="info">
+
+
+function create_default_slot_3(ctx) {
+  var t;
+  var block = {
+    c: function create() {
+      t = text("信息按钮");
+    },
+    l: function claim(nodes) {
+      t = claim_text(nodes, "信息按钮");
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, t, anchor);
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(t);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_default_slot_3.name,
+    type: "slot",
+    source: "(81:1) <Button round type=\\\"info\\\">",
+    ctx: ctx
+  });
+  return block;
+} // (88:2) <Button type="primary">
+
+
+function create_default_slot_2(ctx) {
+  var t;
+  var block = {
+    c: function create() {
+      t = text("主要按钮");
+    },
+    l: function claim(nodes) {
+      t = claim_text(nodes, "主要按钮");
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, t, anchor);
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(t);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_default_slot_2.name,
+    type: "slot",
+    source: "(88:2) <Button type=\\\"primary\\\">",
+    ctx: ctx
+  });
+  return block;
+} // (89:2) <Button type="primary">
+
+
+function create_default_slot_1(ctx) {
+  var t;
+  var block = {
+    c: function create() {
+      t = text("主要按钮");
+    },
+    l: function claim(nodes) {
+      t = claim_text(nodes, "主要按钮");
     },
     m: function mount(target, anchor) {
       insert_dev(target, t, anchor);
@@ -1275,34 +1631,107 @@ function create_default_slot_1(ctx) {
     block: block,
     id: create_default_slot_1.name,
     type: "slot",
-    source: "(69:1) <Button type=\\\"text\\\">",
+    source: "(89:2) <Button type=\\\"primary\\\">",
     ctx: ctx
   });
   return block;
-} // (70:1) <Button type="text" disabled>
+} // (87:1) <ButtonGroup>
 
 
 function create_default_slot(ctx) {
+  var button0;
   var t;
+  var button1;
+  var current;
+  button0 = new Button({
+    props: {
+      type: "primary",
+      $$slots: {
+        default: [create_default_slot_2]
+      },
+      $$scope: {
+        ctx: ctx
+      }
+    },
+    $$inline: true
+  });
+  button1 = new Button({
+    props: {
+      type: "primary",
+      $$slots: {
+        default: [create_default_slot_1]
+      },
+      $$scope: {
+        ctx: ctx
+      }
+    },
+    $$inline: true
+  });
   var block = {
     c: function create() {
-      t = text("文字按钮");
+      create_component(button0.$$.fragment);
+      t = space();
+      create_component(button1.$$.fragment);
     },
     l: function claim(nodes) {
-      t = claim_text(nodes, "文字按钮");
+      claim_component(button0.$$.fragment, nodes);
+      t = claim_space(nodes);
+      claim_component(button1.$$.fragment, nodes);
     },
     m: function mount(target, anchor) {
+      mount_component(button0, target, anchor);
       insert_dev(target, t, anchor);
+      mount_component(button1, target, anchor);
+      current = true;
+    },
+    p: function update(ctx, dirty) {
+      var button0_changes = {};
+
+      if (dirty &
+      /*$$scope*/
+      1) {
+        button0_changes.$$scope = {
+          dirty: dirty,
+          ctx: ctx
+        };
+      }
+
+      button0.$set(button0_changes);
+      var button1_changes = {};
+
+      if (dirty &
+      /*$$scope*/
+      1) {
+        button1_changes.$$scope = {
+          dirty: dirty,
+          ctx: ctx
+        };
+      }
+
+      button1.$set(button1_changes);
+    },
+    i: function intro(local) {
+      if (current) return;
+      transition_in(button0.$$.fragment, local);
+      transition_in(button1.$$.fragment, local);
+      current = true;
+    },
+    o: function outro(local) {
+      transition_out(button0.$$.fragment, local);
+      transition_out(button1.$$.fragment, local);
+      current = false;
     },
     d: function destroy(detaching) {
+      destroy_component(button0, detaching);
       if (detaching) detach_dev(t);
+      destroy_component(button1, detaching);
     }
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
     id: create_default_slot.name,
     type: "slot",
-    source: "(70:1) <Button type=\\\"text\\\" disabled>",
+    source: "(87:1) <ButtonGroup>",
     ctx: ctx
   });
   return block;
@@ -1428,12 +1857,44 @@ function create_fragment(ctx) {
   var button28;
   var t58;
   var button29;
+  var t59;
+  var br14;
+  var t60;
+  var div8;
+  var h38;
+  var t61;
+  var t62;
+  var br15;
+  var t63;
+  var button30;
+  var t64;
+  var button31;
+  var t65;
+  var button32;
+  var t66;
+  var button33;
+  var t67;
+  var button34;
+  var t68;
+  var button35;
+  var t69;
+  var br16;
+  var t70;
+  var div9;
+  var h39;
+  var t71;
+  var t72;
+  var br17;
+  var t73;
+  var buttongroup;
+  var t74;
+  var br18;
   var current;
   button0 = new Button({
     props: {
       block: true,
       $$slots: {
-        default: [create_default_slot_25]
+        default: [create_default_slot_34]
       },
       $$scope: {
         ctx: ctx
@@ -1476,7 +1937,7 @@ function create_fragment(ctx) {
     props: {
       disabled: true,
       $$slots: {
-        default: [create_default_slot_24]
+        default: [create_default_slot_33]
       },
       $$scope: {
         ctx: ctx
@@ -1489,7 +1950,7 @@ function create_fragment(ctx) {
       disabled: true,
       type: "primary",
       $$slots: {
-        default: [create_default_slot_23]
+        default: [create_default_slot_32]
       },
       $$scope: {
         ctx: ctx
@@ -1502,7 +1963,7 @@ function create_fragment(ctx) {
       disabled: true,
       type: "success",
       $$slots: {
-        default: [create_default_slot_22]
+        default: [create_default_slot_31]
       },
       $$scope: {
         ctx: ctx
@@ -1515,7 +1976,7 @@ function create_fragment(ctx) {
       disabled: true,
       type: "error",
       $$slots: {
-        default: [create_default_slot_21]
+        default: [create_default_slot_30]
       },
       $$scope: {
         ctx: ctx
@@ -1528,7 +1989,7 @@ function create_fragment(ctx) {
       disabled: true,
       type: "warning",
       $$slots: {
-        default: [create_default_slot_20]
+        default: [create_default_slot_29]
       },
       $$scope: {
         ctx: ctx
@@ -1541,7 +2002,7 @@ function create_fragment(ctx) {
       disabled: true,
       type: "info",
       $$slots: {
-        default: [create_default_slot_19]
+        default: [create_default_slot_28]
       },
       $$scope: {
         ctx: ctx
@@ -1553,7 +2014,7 @@ function create_fragment(ctx) {
     props: {
       loading: true,
       $$slots: {
-        default: [create_default_slot_18]
+        default: [create_default_slot_27]
       },
       $$scope: {
         ctx: ctx
@@ -1565,7 +2026,7 @@ function create_fragment(ctx) {
     props: {
       plain: true,
       $$slots: {
-        default: [create_default_slot_17]
+        default: [create_default_slot_26]
       },
       $$scope: {
         ctx: ctx
@@ -1578,7 +2039,7 @@ function create_fragment(ctx) {
       plain: true,
       type: "primary",
       $$slots: {
-        default: [create_default_slot_16]
+        default: [create_default_slot_25]
       },
       $$scope: {
         ctx: ctx
@@ -1591,7 +2052,7 @@ function create_fragment(ctx) {
       plain: true,
       type: "success",
       $$slots: {
-        default: [create_default_slot_15]
+        default: [create_default_slot_24]
       },
       $$scope: {
         ctx: ctx
@@ -1604,7 +2065,7 @@ function create_fragment(ctx) {
       plain: true,
       type: "error",
       $$slots: {
-        default: [create_default_slot_14]
+        default: [create_default_slot_23]
       },
       $$scope: {
         ctx: ctx
@@ -1617,7 +2078,7 @@ function create_fragment(ctx) {
       plain: true,
       type: "warning",
       $$slots: {
-        default: [create_default_slot_13]
+        default: [create_default_slot_22]
       },
       $$scope: {
         ctx: ctx
@@ -1630,7 +2091,7 @@ function create_fragment(ctx) {
       plain: true,
       type: "info",
       $$slots: {
-        default: [create_default_slot_12]
+        default: [create_default_slot_21]
       },
       $$scope: {
         ctx: ctx
@@ -1641,8 +2102,9 @@ function create_fragment(ctx) {
   button18 = new Button({
     props: {
       size: "mini",
+      type: "primary",
       $$slots: {
-        default: [create_default_slot_11]
+        default: [create_default_slot_20]
       },
       $$scope: {
         ctx: ctx
@@ -1652,8 +2114,9 @@ function create_fragment(ctx) {
   });
   button19 = new Button({
     props: {
+      type: "primary",
       $$slots: {
-        default: [create_default_slot_10]
+        default: [create_default_slot_19]
       },
       $$scope: {
         ctx: ctx
@@ -1664,8 +2127,9 @@ function create_fragment(ctx) {
   button20 = new Button({
     props: {
       size: "medium",
+      type: "primary",
       $$slots: {
-        default: [create_default_slot_9]
+        default: [create_default_slot_18]
       },
       $$scope: {
         ctx: ctx
@@ -1676,8 +2140,9 @@ function create_fragment(ctx) {
   button21 = new Button({
     props: {
       size: "large",
+      type: "primary",
       $$slots: {
-        default: [create_default_slot_8]
+        default: [create_default_slot_17]
       },
       $$scope: {
         ctx: ctx
@@ -1688,7 +2153,7 @@ function create_fragment(ctx) {
   button22 = new Button({
     props: {
       $$slots: {
-        default: [create_default_slot_7]
+        default: [create_default_slot_16]
       },
       $$scope: {
         ctx: ctx
@@ -1700,7 +2165,7 @@ function create_fragment(ctx) {
     props: {
       type: "primary",
       $$slots: {
-        default: [create_default_slot_6]
+        default: [create_default_slot_15]
       },
       $$scope: {
         ctx: ctx
@@ -1712,7 +2177,7 @@ function create_fragment(ctx) {
     props: {
       type: "success",
       $$slots: {
-        default: [create_default_slot_5]
+        default: [create_default_slot_14]
       },
       $$scope: {
         ctx: ctx
@@ -1724,7 +2189,7 @@ function create_fragment(ctx) {
     props: {
       type: "error",
       $$slots: {
-        default: [create_default_slot_4]
+        default: [create_default_slot_13]
       },
       $$scope: {
         ctx: ctx
@@ -1736,7 +2201,7 @@ function create_fragment(ctx) {
     props: {
       type: "warning",
       $$slots: {
-        default: [create_default_slot_3]
+        default: [create_default_slot_12]
       },
       $$scope: {
         ctx: ctx
@@ -1748,7 +2213,7 @@ function create_fragment(ctx) {
     props: {
       type: "info",
       $$slots: {
-        default: [create_default_slot_2]
+        default: [create_default_slot_11]
       },
       $$scope: {
         ctx: ctx
@@ -1760,7 +2225,7 @@ function create_fragment(ctx) {
     props: {
       type: "text",
       $$slots: {
-        default: [create_default_slot_1]
+        default: [create_default_slot_10]
       },
       $$scope: {
         ctx: ctx
@@ -1772,6 +2237,94 @@ function create_fragment(ctx) {
     props: {
       type: "text",
       disabled: true,
+      $$slots: {
+        default: [create_default_slot_9]
+      },
+      $$scope: {
+        ctx: ctx
+      }
+    },
+    $$inline: true
+  });
+  button30 = new Button({
+    props: {
+      round: true,
+      $$slots: {
+        default: [create_default_slot_8]
+      },
+      $$scope: {
+        ctx: ctx
+      }
+    },
+    $$inline: true
+  });
+  button31 = new Button({
+    props: {
+      round: true,
+      type: "primary",
+      $$slots: {
+        default: [create_default_slot_7]
+      },
+      $$scope: {
+        ctx: ctx
+      }
+    },
+    $$inline: true
+  });
+  button32 = new Button({
+    props: {
+      round: true,
+      type: "success",
+      $$slots: {
+        default: [create_default_slot_6]
+      },
+      $$scope: {
+        ctx: ctx
+      }
+    },
+    $$inline: true
+  });
+  button33 = new Button({
+    props: {
+      round: true,
+      type: "error",
+      $$slots: {
+        default: [create_default_slot_5]
+      },
+      $$scope: {
+        ctx: ctx
+      }
+    },
+    $$inline: true
+  });
+  button34 = new Button({
+    props: {
+      round: true,
+      type: "warning",
+      $$slots: {
+        default: [create_default_slot_4]
+      },
+      $$scope: {
+        ctx: ctx
+      }
+    },
+    $$inline: true
+  });
+  button35 = new Button({
+    props: {
+      round: true,
+      type: "info",
+      $$slots: {
+        default: [create_default_slot_3]
+      },
+      $$scope: {
+        ctx: ctx
+      }
+    },
+    $$inline: true
+  });
+  buttongroup = new ButtonGroup({
+    props: {
       $$slots: {
         default: [create_default_slot]
       },
@@ -1902,6 +2455,38 @@ function create_fragment(ctx) {
       create_component(button28.$$.fragment);
       t58 = space();
       create_component(button29.$$.fragment);
+      t59 = space();
+      br14 = element("br");
+      t60 = space();
+      div8 = element("div");
+      h38 = element("h3");
+      t61 = text("圆角类型");
+      t62 = space();
+      br15 = element("br");
+      t63 = space();
+      create_component(button30.$$.fragment);
+      t64 = space();
+      create_component(button31.$$.fragment);
+      t65 = space();
+      create_component(button32.$$.fragment);
+      t66 = space();
+      create_component(button33.$$.fragment);
+      t67 = space();
+      create_component(button34.$$.fragment);
+      t68 = space();
+      create_component(button35.$$.fragment);
+      t69 = space();
+      br16 = element("br");
+      t70 = space();
+      div9 = element("div");
+      h39 = element("h3");
+      t71 = text("按钮组");
+      t72 = space();
+      br17 = element("br");
+      t73 = space();
+      create_component(buttongroup.$$.fragment);
+      t74 = space();
+      br18 = element("br");
       this.h();
     },
     l: function claim(nodes) {
@@ -2056,39 +2641,88 @@ function create_fragment(ctx) {
       t58 = claim_space(div7_nodes);
       claim_component(button29.$$.fragment, div7_nodes);
       div7_nodes.forEach(detach_dev);
+      t59 = claim_space(nodes);
+      br14 = claim_element(nodes, "BR", {});
+      t60 = claim_space(nodes);
+      div8 = claim_element(nodes, "DIV", {});
+      var div8_nodes = children(div8);
+      h38 = claim_element(div8_nodes, "H3", {});
+      var h38_nodes = children(h38);
+      t61 = claim_text(h38_nodes, "圆角类型");
+      h38_nodes.forEach(detach_dev);
+      t62 = claim_space(div8_nodes);
+      br15 = claim_element(div8_nodes, "BR", {});
+      t63 = claim_space(div8_nodes);
+      claim_component(button30.$$.fragment, div8_nodes);
+      t64 = claim_space(div8_nodes);
+      claim_component(button31.$$.fragment, div8_nodes);
+      t65 = claim_space(div8_nodes);
+      claim_component(button32.$$.fragment, div8_nodes);
+      t66 = claim_space(div8_nodes);
+      claim_component(button33.$$.fragment, div8_nodes);
+      t67 = claim_space(div8_nodes);
+      claim_component(button34.$$.fragment, div8_nodes);
+      t68 = claim_space(div8_nodes);
+      claim_component(button35.$$.fragment, div8_nodes);
+      div8_nodes.forEach(detach_dev);
+      t69 = claim_space(nodes);
+      br16 = claim_element(nodes, "BR", {});
+      t70 = claim_space(nodes);
+      div9 = claim_element(nodes, "DIV", {});
+      var div9_nodes = children(div9);
+      h39 = claim_element(div9_nodes, "H3", {});
+      var h39_nodes = children(h39);
+      t71 = claim_text(h39_nodes, "按钮组");
+      h39_nodes.forEach(detach_dev);
+      t72 = claim_space(div9_nodes);
+      br17 = claim_element(div9_nodes, "BR", {});
+      t73 = claim_space(div9_nodes);
+      claim_component(buttongroup.$$.fragment, div9_nodes);
+      div9_nodes.forEach(detach_dev);
+      t74 = claim_space(nodes);
+      br18 = claim_element(nodes, "BR", {});
       this.h();
     },
     h: function hydrate() {
-      add_location(h30, file, 4, 1, 86);
-      add_location(br0, file, 5, 1, 101);
-      add_location(div0, file, 3, 0, 79);
-      add_location(br1, file, 8, 0, 144);
-      add_location(h31, file, 10, 1, 158);
-      add_location(br2, file, 11, 1, 173);
-      add_location(div1, file, 9, 0, 151);
-      add_location(br3, file, 17, 0, 358);
-      add_location(h32, file, 19, 1, 372);
-      add_location(br4, file, 20, 1, 387);
-      add_location(div2, file, 18, 0, 365);
-      add_location(h33, file, 29, 1, 670);
-      add_location(br5, file, 30, 1, 690);
-      add_location(div3, file, 28, 0, 663);
-      add_location(br6, file, 33, 0, 735);
-      add_location(h34, file, 35, 1, 749);
-      add_location(br7, file, 36, 1, 764);
-      add_location(div4, file, 34, 0, 742);
-      add_location(br8, file, 44, 0, 1022);
-      add_location(h35, file, 46, 1, 1036);
-      add_location(br9, file, 47, 1, 1051);
-      add_location(div5, file, 45, 0, 1029);
-      add_location(br10, file, 53, 0, 1196);
-      add_location(h36, file, 55, 1, 1210);
-      add_location(br11, file, 56, 1, 1225);
-      add_location(div6, file, 54, 0, 1203);
-      add_location(br12, file, 64, 0, 1447);
-      add_location(h37, file, 66, 1, 1461);
-      add_location(br13, file, 67, 1, 1476);
-      add_location(div7, file, 65, 0, 1454);
+      add_location(h30, file, 4, 1, 99);
+      add_location(br0, file, 5, 1, 114);
+      add_location(div0, file, 3, 0, 92);
+      add_location(br1, file, 8, 0, 157);
+      add_location(h31, file, 10, 1, 171);
+      add_location(br2, file, 11, 1, 186);
+      add_location(div1, file, 9, 0, 164);
+      add_location(br3, file, 17, 0, 371);
+      add_location(h32, file, 19, 1, 385);
+      add_location(br4, file, 20, 1, 400);
+      add_location(div2, file, 18, 0, 378);
+      add_location(h33, file, 29, 1, 683);
+      add_location(br5, file, 30, 1, 703);
+      add_location(div3, file, 28, 0, 676);
+      add_location(br6, file, 33, 0, 748);
+      add_location(h34, file, 35, 1, 762);
+      add_location(br7, file, 36, 1, 777);
+      add_location(div4, file, 34, 0, 755);
+      add_location(br8, file, 44, 0, 1035);
+      add_location(h35, file, 46, 1, 1049);
+      add_location(br9, file, 47, 1, 1064);
+      add_location(div5, file, 45, 0, 1042);
+      add_location(br10, file, 53, 0, 1269);
+      add_location(h36, file, 55, 1, 1283);
+      add_location(br11, file, 56, 1, 1298);
+      add_location(div6, file, 54, 0, 1276);
+      add_location(br12, file, 64, 0, 1520);
+      add_location(h37, file, 66, 1, 1534);
+      add_location(br13, file, 67, 1, 1549);
+      add_location(div7, file, 65, 0, 1527);
+      add_location(br14, file, 71, 0, 1642);
+      add_location(h38, file, 73, 1, 1656);
+      add_location(br15, file, 74, 1, 1671);
+      add_location(div8, file, 72, 0, 1649);
+      add_location(br16, file, 82, 0, 1929);
+      add_location(h39, file, 84, 1, 1943);
+      add_location(br17, file, 85, 1, 1957);
+      add_location(div9, file, 83, 0, 1936);
+      add_location(br18, file, 91, 0, 2080);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div0, anchor);
@@ -2210,6 +2844,38 @@ function create_fragment(ctx) {
       mount_component(button28, div7, null);
       append_dev(div7, t58);
       mount_component(button29, div7, null);
+      insert_dev(target, t59, anchor);
+      insert_dev(target, br14, anchor);
+      insert_dev(target, t60, anchor);
+      insert_dev(target, div8, anchor);
+      append_dev(div8, h38);
+      append_dev(h38, t61);
+      append_dev(div8, t62);
+      append_dev(div8, br15);
+      append_dev(div8, t63);
+      mount_component(button30, div8, null);
+      append_dev(div8, t64);
+      mount_component(button31, div8, null);
+      append_dev(div8, t65);
+      mount_component(button32, div8, null);
+      append_dev(div8, t66);
+      mount_component(button33, div8, null);
+      append_dev(div8, t67);
+      mount_component(button34, div8, null);
+      append_dev(div8, t68);
+      mount_component(button35, div8, null);
+      insert_dev(target, t69, anchor);
+      insert_dev(target, br16, anchor);
+      insert_dev(target, t70, anchor);
+      insert_dev(target, div9, anchor);
+      append_dev(div9, h39);
+      append_dev(h39, t71);
+      append_dev(div9, t72);
+      append_dev(div9, br17);
+      append_dev(div9, t73);
+      mount_component(buttongroup, div9, null);
+      insert_dev(target, t74, anchor);
+      insert_dev(target, br18, anchor);
       current = true;
     },
     p: function update(ctx, _ref) {
@@ -2528,6 +3194,90 @@ function create_fragment(ctx) {
       }
 
       button29.$set(button29_changes);
+      var button30_changes = {};
+
+      if (dirty &
+      /*$$scope*/
+      1) {
+        button30_changes.$$scope = {
+          dirty: dirty,
+          ctx: ctx
+        };
+      }
+
+      button30.$set(button30_changes);
+      var button31_changes = {};
+
+      if (dirty &
+      /*$$scope*/
+      1) {
+        button31_changes.$$scope = {
+          dirty: dirty,
+          ctx: ctx
+        };
+      }
+
+      button31.$set(button31_changes);
+      var button32_changes = {};
+
+      if (dirty &
+      /*$$scope*/
+      1) {
+        button32_changes.$$scope = {
+          dirty: dirty,
+          ctx: ctx
+        };
+      }
+
+      button32.$set(button32_changes);
+      var button33_changes = {};
+
+      if (dirty &
+      /*$$scope*/
+      1) {
+        button33_changes.$$scope = {
+          dirty: dirty,
+          ctx: ctx
+        };
+      }
+
+      button33.$set(button33_changes);
+      var button34_changes = {};
+
+      if (dirty &
+      /*$$scope*/
+      1) {
+        button34_changes.$$scope = {
+          dirty: dirty,
+          ctx: ctx
+        };
+      }
+
+      button34.$set(button34_changes);
+      var button35_changes = {};
+
+      if (dirty &
+      /*$$scope*/
+      1) {
+        button35_changes.$$scope = {
+          dirty: dirty,
+          ctx: ctx
+        };
+      }
+
+      button35.$set(button35_changes);
+      var buttongroup_changes = {};
+
+      if (dirty &
+      /*$$scope*/
+      1) {
+        buttongroup_changes.$$scope = {
+          dirty: dirty,
+          ctx: ctx
+        };
+      }
+
+      buttongroup.$set(buttongroup_changes);
     },
     i: function intro(local) {
       if (current) return;
@@ -2561,6 +3311,13 @@ function create_fragment(ctx) {
       transition_in(button27.$$.fragment, local);
       transition_in(button28.$$.fragment, local);
       transition_in(button29.$$.fragment, local);
+      transition_in(button30.$$.fragment, local);
+      transition_in(button31.$$.fragment, local);
+      transition_in(button32.$$.fragment, local);
+      transition_in(button33.$$.fragment, local);
+      transition_in(button34.$$.fragment, local);
+      transition_in(button35.$$.fragment, local);
+      transition_in(buttongroup.$$.fragment, local);
       current = true;
     },
     o: function outro(local) {
@@ -2594,6 +3351,13 @@ function create_fragment(ctx) {
       transition_out(button27.$$.fragment, local);
       transition_out(button28.$$.fragment, local);
       transition_out(button29.$$.fragment, local);
+      transition_out(button30.$$.fragment, local);
+      transition_out(button31.$$.fragment, local);
+      transition_out(button32.$$.fragment, local);
+      transition_out(button33.$$.fragment, local);
+      transition_out(button34.$$.fragment, local);
+      transition_out(button35.$$.fragment, local);
+      transition_out(buttongroup.$$.fragment, local);
       current = false;
     },
     d: function destroy(detaching) {
@@ -2654,6 +3418,23 @@ function create_fragment(ctx) {
       if (detaching) detach_dev(div7);
       destroy_component(button28);
       destroy_component(button29);
+      if (detaching) detach_dev(t59);
+      if (detaching) detach_dev(br14);
+      if (detaching) detach_dev(t60);
+      if (detaching) detach_dev(div8);
+      destroy_component(button30);
+      destroy_component(button31);
+      destroy_component(button32);
+      destroy_component(button33);
+      destroy_component(button34);
+      destroy_component(button35);
+      if (detaching) detach_dev(t69);
+      if (detaching) detach_dev(br16);
+      if (detaching) detach_dev(t70);
+      if (detaching) detach_dev(div9);
+      destroy_component(buttongroup);
+      if (detaching) detach_dev(t74);
+      if (detaching) detach_dev(br18);
     }
   };
   dispatch_dev("SvelteRegisterBlock", {
@@ -2678,7 +3459,8 @@ function instance($$self, $$props, $$invalidate) {
 
   $$self.$capture_state = function () {
     return {
-      Button: Button
+      Button: Button,
+      ButtonGroup: ButtonGroup
     };
   };
 

@@ -2216,7 +2216,9 @@ function create_fragment$3(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(i, "class", i_class_value = "iconfont " + (
+      attr_dev(i, "class", i_class_value = "iconfont " +
+      /*className*/
+      ctx[3] + " " + (
       /*name*/
       ctx[1] ? "icon-".concat(
       /*name*/
@@ -2228,7 +2230,7 @@ function create_fragment$3(ctx) {
       ctx[0] ? "color: ".concat(
       /*color*/
       ctx[0], ";") : ""));
-      add_location(i, file$2, 5, 0, 93);
+      add_location(i, file$2, 7, 0, 146);
     },
     m: function mount(target, anchor) {
       insert_dev(target, i, anchor);
@@ -2238,8 +2240,10 @@ function create_fragment$3(ctx) {
           dirty = _ref2[0];
 
       if (dirty &
-      /*name*/
-      2 && i_class_value !== (i_class_value = "iconfont " + (
+      /*className, name*/
+      10 && i_class_value !== (i_class_value = "iconfont " +
+      /*className*/
+      ctx[3] + " " + (
       /*name*/
       ctx[1] ? "icon-".concat(
       /*name*/
@@ -2284,7 +2288,9 @@ function instance$3($$self, $$props, $$invalidate) {
   var name = $$props.name;
   var _$$props$size = $$props.size,
       size = _$$props$size === void 0 ? "16px" : _$$props$size;
-  var writable_props = ["color", "name", "size"];
+  var _$$props$class = $$props.class,
+      className = _$$props$class === void 0 ? "" : _$$props$class;
+  var writable_props = ["color", "name", "size", "class"];
   Object.keys($$props).forEach(function (key) {
     if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Icon> was created with unknown prop '".concat(key, "'"));
   });
@@ -2293,13 +2299,15 @@ function instance$3($$self, $$props, $$invalidate) {
     if ("color" in $$props) $$invalidate(0, color = $$props.color);
     if ("name" in $$props) $$invalidate(1, name = $$props.name);
     if ("size" in $$props) $$invalidate(2, size = $$props.size);
+    if ("class" in $$props) $$invalidate(3, className = $$props.class);
   };
 
   $$self.$capture_state = function () {
     return {
       color: color,
       name: name,
-      size: size
+      size: size,
+      className: className
     };
   };
 
@@ -2307,13 +2315,14 @@ function instance$3($$self, $$props, $$invalidate) {
     if ("color" in $$props) $$invalidate(0, color = $$props.color);
     if ("name" in $$props) $$invalidate(1, name = $$props.name);
     if ("size" in $$props) $$invalidate(2, size = $$props.size);
+    if ("className" in $$props) $$invalidate(3, className = $$props.className);
   };
 
   if ($$props && "$$inject" in $$props) {
     $$self.$inject_state($$props.$$inject);
   }
 
-  return [color, name, size];
+  return [color, name, size, className];
 }
 
 var Icon = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -2330,7 +2339,8 @@ var Icon = /*#__PURE__*/function (_SvelteComponentDev) {
     init$1(_assertThisInitialized(_this), options, instance$3, create_fragment$3, safe_not_equal, {
       color: 0,
       name: 1,
-      size: 2
+      size: 2,
+      class: 3
     });
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
@@ -2374,6 +2384,14 @@ var Icon = /*#__PURE__*/function (_SvelteComponentDev) {
     }
   }, {
     key: "size",
+    get: function get() {
+      throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    },
+    set: function set(value) {
+      throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    }
+  }, {
+    key: "class",
     get: function get() {
       throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     },
@@ -2436,7 +2454,7 @@ function create_each_block_2(key_1, ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(a, "class", "nav__item svelte-nc2yiv");
+      attr_dev(a, "class", "nav__item svelte-1cyeawb");
       attr_dev(a, "aria-current", a_aria_current_value =
       /*segment*/
       ctx[0] ===
@@ -2695,33 +2713,33 @@ function create_if_block$2(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(h30, "class", "link__title svelte-nc2yiv");
+      attr_dev(h30, "class", "link__title svelte-1cyeawb");
       add_location(h30, file$1, 27, 4, 618);
       attr_dev(ul0, "class", "link__list");
       add_location(ul0, file$1, 28, 4, 654);
-      attr_dev(div0, "class", "links__item svelte-nc2yiv");
+      attr_dev(div0, "class", "links__item svelte-1cyeawb");
       add_location(div0, file$1, 26, 3, 588);
-      attr_dev(h31, "class", "link__title svelte-nc2yiv");
+      attr_dev(h31, "class", "link__title svelte-1cyeawb");
       add_location(h31, file$1, 37, 4, 889);
       attr_dev(ul1, "class", "link__list");
       add_location(ul1, file$1, 38, 4, 925);
-      attr_dev(div1, "class", "links__item svelte-nc2yiv");
+      attr_dev(div1, "class", "links__item svelte-1cyeawb");
       add_location(div1, file$1, 36, 3, 859);
-      attr_dev(div2, "class", "links svelte-nc2yiv");
+      attr_dev(div2, "class", "links svelte-1cyeawb");
       add_location(div2, file$1, 25, 2, 565);
-      attr_dev(h32, "class", "icon__title svelte-nc2yiv");
+      attr_dev(h32, "class", "icon__title svelte-1cyeawb");
       add_location(h32, file$1, 48, 3, 1164);
-      attr_dev(span, "class", "icon__item svelte-nc2yiv");
+      attr_dev(span, "class", "icon__item svelte-1cyeawb");
       add_location(span, file$1, 50, 4, 1246);
       attr_dev(a, "href", githubBaseUrl);
       attr_dev(a, "target", "_blank");
-      attr_dev(a, "class", "icon__item svelte-nc2yiv");
+      attr_dev(a, "class", "icon__item svelte-1cyeawb");
       add_location(a, file$1, 53, 4, 1331);
-      attr_dev(div3, "class", "icon__list svelte-nc2yiv");
+      attr_dev(div3, "class", "icon__list svelte-1cyeawb");
       add_location(div3, file$1, 49, 3, 1217);
       attr_dev(div4, "class", "icon");
       add_location(div4, file$1, 47, 2, 1142);
-      attr_dev(footer, "class", "svelte-nc2yiv");
+      attr_dev(footer, "class", "svelte-1cyeawb");
       add_location(footer, file$1, 24, 1, 554);
     },
     m: function mount(target, anchor) {
@@ -2856,9 +2874,9 @@ function create_each_block_1(key_1, ctx) {
       attr_dev(a, "href", /*item*/
       ctx[3].url);
       attr_dev(a, "target", "_blank");
-      attr_dev(a, "class", "svelte-nc2yiv");
+      attr_dev(a, "class", "svelte-1cyeawb");
       add_location(a, file$1, 31, 7, 758);
-      attr_dev(li, "class", "link__item svelte-nc2yiv");
+      attr_dev(li, "class", "link__item svelte-1cyeawb");
       add_location(li, file$1, 30, 6, 727);
       this.first = li;
     },
@@ -2925,9 +2943,9 @@ function create_each_block(key_1, ctx) {
       attr_dev(a, "href", /*item*/
       ctx[3].url);
       attr_dev(a, "target", "_blank");
-      attr_dev(a, "class", "svelte-nc2yiv");
+      attr_dev(a, "class", "svelte-1cyeawb");
       add_location(a, file$1, 41, 7, 1033);
-      attr_dev(li, "class", "link__item svelte-nc2yiv");
+      attr_dev(li, "class", "link__item svelte-1cyeawb");
       add_location(li, file$1, 40, 6, 1002);
       this.first = li;
     },
@@ -3058,16 +3076,16 @@ function create_fragment$2(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(a, "class", "logo svelte-nc2yiv");
+      attr_dev(a, "class", "logo svelte-1cyeawb");
       attr_dev(a, "href", "./");
       add_location(a, file$1, 7, 2, 209);
-      attr_dev(nav, "class", "nav svelte-nc2yiv");
+      attr_dev(nav, "class", "nav svelte-1cyeawb");
       add_location(nav, file$1, 8, 2, 255);
-      attr_dev(header, "class", "svelte-nc2yiv");
+      attr_dev(header, "class", "svelte-1cyeawb");
       add_location(header, file$1, 6, 1, 198);
-      attr_dev(main, "class", "svelte-nc2yiv");
+      attr_dev(main, "class", "svelte-1cyeawb");
       add_location(main, file$1, 18, 1, 484);
-      attr_dev(section, "class", "svelte-nc2yiv");
+      attr_dev(section, "class", "svelte-1cyeawb");
       add_location(section, file$1, 5, 0, 187);
     },
     m: function mount(target, anchor) {
@@ -4357,35 +4375,35 @@ var App = /*#__PURE__*/function (_SvelteComponentDev) {
 var ignore = [/^\/component\/([^/]+?)\.json$/];
 var components = [{
   js: function js() {
-    return Promise.all([import('./index.2b755552.js'), __inject_styles(["client-3e302934.css","index-c7b8bd9c.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.facab73c.js'), __inject_styles(["client-694e4bf8.css","index-56fb6339.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./_layout.b3118663.js'), __inject_styles(["client-3e302934.css","_layout-ea1ea01e.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./_layout.6d3d06f2.js'), __inject_styles(["client-694e4bf8.css","_layout-257a2352.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./[page].e685a476.js'), __inject_styles(["client-3e302934.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./[page].c5dae2a2.js'), __inject_styles(["client-694e4bf8.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./index.3e01a918.js'), __inject_styles(["client-3e302934.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.68d1ac16.js'), __inject_styles(["client-694e4bf8.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./_layout.f77cbe89.js'), __inject_styles(["client-3e302934.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./_layout.3aa297df.js'), __inject_styles(["client-694e4bf8.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./design.63a95049.js'), __inject_styles(["client-3e302934.css","design-10a68980.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./design.fdeebf29.js'), __inject_styles(["client-694e4bf8.css","design-5725dfd0.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./index.0d9988d4.js'), __inject_styles(["client-3e302934.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.95cb7644.js'), __inject_styles(["client-694e4bf8.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./demo.0d5c6e89.js'), __inject_styles(["client-3e302934.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./demo.c3119e6d.js'), __inject_styles(["client-694e4bf8.css"])]).then(function(x) { return x[0]; });
   }
 }];
 var routes = function (d) {
