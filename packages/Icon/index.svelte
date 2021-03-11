@@ -8,11 +8,7 @@
 	export let size = '16px'
 
 	$: style = `font-size: ${size};${preffixConcat(color, 'color: ')}`
-	const classAttr = trimConcat(
-		'iconfont',
-		className,
-		preffixConcat(name, 'icon-'),
-	)
+	$: classAttr = trimConcat('iconfont', className, preffixConcat(name, 'icon-'))
 </script>
 
 <i class="{classAttr}" style="{style}"></i>

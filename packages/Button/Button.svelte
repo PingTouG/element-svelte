@@ -15,7 +15,7 @@
 	export let size: string
 	export let type: string
 
-	const classAttr = trimConcat(
+	$: classAttr = trimConcat(
 		'es-button',
 		className,
 		preffixConcat(size, ''),

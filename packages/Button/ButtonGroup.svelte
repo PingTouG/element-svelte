@@ -3,7 +3,7 @@
 	let className = ''
 	export { className as class }
 
-	const classAttr = trimConcat('es-button-group', className)
+	$: classAttr = trimConcat('es-button-group', className)
 </script>
 
 <div class="{classAttr}">
