@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Icon from '../Icon/index.svelte'
+	import { preffixConcat, trimConcat } from '../utils/tools'
 
+	let className = ''
+	export { className as class }
 	export let block: boolean
 	export let circle: boolean
 	export let disabled: boolean
@@ -11,10 +14,17 @@
 	export let round: boolean
 	export let size: string
 	export let type: string
+
+	const classAttr = trimConcat(
+		'es-button',
+		className,
+		preffixConcat(size, ''),
+		preffixConcat(type, 'type-'),
+	)
 </script>
 
 <button
-	class="es-button {size ? size : ''} {type ? `type-${type}` : ''}"
+	class="{classAttr}"
 	class:block
 	class:circle
 	class:loading
