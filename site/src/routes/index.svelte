@@ -4,7 +4,7 @@
 	import { headerNavModel } from '../models'
 
 	// 滚动切换主题
-	let scrollY: number = 0
+	let scrollY = 0
 	let style: string
 	$: if (scrollY < 570) {
 		style = `height: ${scrollY}px`
@@ -53,7 +53,7 @@
 	}
 
 	.desc {
-		color: $color-info;
+		color: $c-info;
 	}
 
 	.theme {
@@ -63,7 +63,7 @@
 
 		&-red {
 			transition: height 0.1s;
-			background: $color-white;
+			background: $c-white;
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -83,8 +83,8 @@
 		&__item {
 			min-height: 26rem;
 			width: 100%;
-			background: $color-white;
-			border: 1px solid $border-color-lighter;
+			background: $c-white;
+			border: 1px solid $bc-lighter;
 			border-radius: 0.375rem;
 			box-sizing: border-box;
 			text-align: center;
@@ -95,7 +95,7 @@
 
 			&:hover {
 				transform: translateY(-0.5rem);
-				box-shadow: $shaow-light;
+				box-shadow: $shaow-3;
 			}
 
 			&:last-child {
@@ -115,7 +115,7 @@
 		}
 
 		&__description {
-			color: $color-text-secondary;
+			color: $tc-secondary;
 			padding: 0 1.5rem;
 			font-size: 0.875rem;
 		}
@@ -124,13 +124,13 @@
 			height: 3rem;
 			line-height: 3rem;
 			font-size: 0.875rem;
-			color: $color-primary;
+			color: $c-primary;
 			text-align: center;
-			border-top: 1px solid $border-color-lighter;
+			border-top: 1px solid $bc-lighter;
 			width: 100%;
 			position: absolute;
 			bottom: 0;
-			background-color: $color-white;
+			background-color: $c-white;
 			border-radius: 0 0 0.375rem 0.375rem;
 			display: block;
 		}

@@ -1,0 +1,102 @@
+@import '../styles/vars';
+@import './mixin';
+
+.es-button {
+	display: inline-block;
+	padding: $btn-base;
+	margin: 0;
+	line-height: 1;
+	border-width: 1px;
+	border-style: solid;
+	color: $tc-regular;
+	border-radius: $radius;
+	font-size: 14px;
+	text-align: center;
+	white-space: nowrap;
+	cursor: pointer;
+	user-select: none;
+	@include type;
+
+	&[class*='type-'] {
+		color: $c-white;
+		&:disabled {
+			color: $c-white;
+			border-color: transparent;
+		}
+		&:disabled:hover {
+			border-color: transparent;
+		}
+	}
+
+	@each $type, $color, $hover-bg, $disabled-hover-bg, $plain-bg, $plain-bc,
+		$plain-active-bg
+			in (
+				primary,
+				$c-primary,
+				$c-blue-5,
+				$c-blue-3,
+				$c-blue-1,
+				$c-blue-2,
+				$c-blue-7
+			),
+		(
+			success,
+			$c-success,
+			$c-green-5,
+			$c-green-3,
+			$c-green-1,
+			$c-green-2,
+			$c-green-7
+		),
+		(error, $c-error, $c-red-5, $c-red-3, $c-red-1, $c-red-2, $c-red-7),
+		(
+			warning,
+			$c-warning,
+			$c-orange-5,
+			$c-orange-3,
+			$c-orange-1,
+			$c-orange-2,
+			$c-orange-7
+		),
+		(info, $c-info, $c-gray-5, $c-gray-3, $c-gray-1, $c-gray-2, $c-gray-7), text
+	{
+		&.type-#{$type} {
+			@include type(
+				$type,
+				$color,
+				$hover-bg,
+				$disabled-hover-bg,
+				$plain-bg,
+				$plain-bc,
+				$plain-active-bg
+			);
+		}
+	}
+
+	&.loading .loading-icon {
+		animation: rotating 2s linear infinite;
+
+		&::before {
+			content: '';
+			display: inline-block;
+			width: 1em;
+			height: 1em;
+			margin-right: 0.5em;
+			color: $c-white;
+			border: 1px solid $bc-base;
+			border-radius: 50%;
+			vertical-align: -10%;
+			clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
+			animation: rotating 1s linear infinite;
+		}
+	}
+}
+
+@keyframes rotating {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(1turn);
+	}
+}

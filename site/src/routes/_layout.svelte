@@ -79,11 +79,11 @@
 		align-items: center;
 		justify-content: space-between;
 		padding: 0 3rem;
-		border-bottom: 1px solid $border-color-extra-light;
+		border-bottom: 1px solid $bc-extra-light;
 	}
 
 	.logo {
-		color: $color-primary;
+		color: $c-primary;
 		font-weight: 700;
 		font-size: 2rem;
 	}
@@ -98,13 +98,13 @@
 			align-items: center;
 			height: 100%;
 			margin-right: 1.5rem;
-			color: rgba($color-primary, 0.6);
+			color: rgba($c-primary, 0.6);
 		}
 	}
 
 	[aria-current] {
 		position: relative;
-		color: $color-primary;
+		color: $c-primary;
 		font-weight: 500;
 
 		&::after {
@@ -112,7 +112,7 @@
 			content: '';
 			width: 100%;
 			height: 0.125rem;
-			background-color: $color-primary;
+			background-color: $c-primary;
 			display: block;
 			bottom: 0;
 		}
@@ -126,7 +126,7 @@
 		width: 100vw;
 		min-height: 20vh;
 		padding: 1rem 4.5rem 4.5rem;
-		background-color: $background-color-base;
+		background-color: $c-gray-1;
 		display: flex;
 		justify-content: space-between;
 	}
@@ -148,12 +148,12 @@
 			margin-bottom: 0.75rem;
 
 			a {
-				color: $color-text-regular;
+				color: $tc-regular;
 				font-size: 0.875rem;
 
 				&:hover {
 					text-decoration: underline;
-					color: $color-text-primary;
+					color: $tc-primary;
 				}
 			}
 		}
@@ -161,7 +161,7 @@
 
 	.icon {
 		&__title {
-			color: $color-text-secondary;
+			color: $tc-secondary;
 			margin-bottom: 1rem;
 		}
 
@@ -170,7 +170,7 @@
 		}
 
 		&__item {
-			color: $color-text-placeholder;
+			color: $tc-placeholder;
 			cursor: pointer;
 			margin-right: 0.875rem;
 		}

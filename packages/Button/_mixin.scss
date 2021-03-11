@@ -1,0 +1,130 @@
+@import '../styles/vars';
+
+@mixin size($size: base, $circle: false) {
+	@if $circle == true {
+		@if $size == mini {
+			padding: $btn-c-mini;
+		} @else if $size == medium {
+			padding: $btn-c-medium;
+		} @else if $size == large {
+			padding: $btn-c-large;
+		} @else {
+			padding: $btn-c-base;
+		}
+	} @else {
+		@if $size == mini {
+			padding: $btn-mini;
+		} @else if $size == medium {
+			padding: $btn-medium;
+		} @else if $size == large {
+			padding: $btn-large;
+		} @else {
+			padding: $btn-base;
+		}
+	}
+}
+
+@mixin type(
+	$type: base,
+	$color: base,
+	$hover-bg: base,
+	$disabled-hover-bg: base,
+	$plain-bg: base,
+	$plain-bc: base,
+	$plain-active-bg: base
+) {
+	@each $size in mini, medium, large {
+		&.#{$size} {
+			@include size($size);
+		}
+	}
+
+	&.round {
+		border-radius: 20px;
+	}
+
+	@if $type == base {
+		background-color: $c-white;
+		border-color: $bc-base;
+
+		&:focus {
+			outline: none;
+		}
+		&:hover {
+			color: $c-primary;
+			background-color: $c-blue-1;
+			border-color: $c-blue-2;
+		}
+		&:active {
+			border-color: $c-blue-3;
+		}
+		&:disabled,
+		&.loading {
+			cursor: not-allowed;
+			color: $c-gray-5;
+			background-color: $c-white;
+			border-color: $bc-light;
+		}
+
+		&.block {
+			width: 100%;
+		}
+		&.circle {
+			border-radius: 50%;
+			@include size($circle: true);
+
+			@each $size in mini, medium, large {
+				&.#{$size} {
+					@include size($size, true);
+				}
+			}
+		}
+		&.plain:hover {
+			color: $c-blue-5;
+			background-color: $c-white;
+			border-color: $c-blue-5;
+		}
+		&.plain:active {
+			color: $c-primary;
+			background-color: $c-white;
+			border-color: $c-primary;
+		}
+	} @else if $type == text {
+		color: $c-primary;
+		background-color: transparent;
+		border-color: transparent;
+
+		&:disabled,
+		&:disabled:hover {
+			color: $c-gray-4;
+		}
+	} @else {
+		background-color: $color;
+		border-color: $color;
+
+		&:hover {
+			background-color: $hover-bg;
+			border-color: transparent;
+		}
+		&:active {
+			background-color: $color;
+		}
+		&:disabled,
+		&:disabled:hover {
+			background-color: $disabled-hover-bg;
+		}
+
+		&.plain {
+			color: $color;
+			background-color: $plain-bg;
+			border-color: $plain-bc;
+		}
+		&.plain:hover {
+			color: $c-white;
+			background-color: $color;
+		}
+		&.plain:active {
+			background-color: $plain-active-bg;
+		}
+	}
+}

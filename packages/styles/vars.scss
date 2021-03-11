@@ -1,37 +1,114 @@
-/* 主题色 */
-$color-primary: #409eff;
-/* 成功颜色 */
-$color-success: #67c23a;
-/* 警告颜色 */
-$color-warning: #e6a23c;
-/* 危险颜色 */
-$color-danger: #f56c6c;
-/* 信息颜色 */
-$color-info: #909399;
-/* 主要文字颜色 */
-$color-text-primary: #303133;
-/* 常规文字颜色 */
-$color-text-regular: #606266;
-/* 次要文字颜色 */
-$color-text-secondary: $color-info;
-/* 占位文字颜色 */
-$color-text-placeholder: #c0c4cc;
+// 红色系
+$c-red-1: #fff1f0;
+$c-red-2: #ffccc7;
+$c-red-3: #ffa39e;
+$c-red-4: #ff7875;
+$c-red-5: #ff4d4f;
+$c-red-6: #f5222d;
+$c-red-7: #cf1322;
+$c-red-8: #cf1322;
+$c-red-9: #820014;
+$c-red-10: #5c0011;
+// 蓝色系
+$c-blue-1: #e6f7ff;
+$c-blue-2: #bae7ff;
+$c-blue-3: #91d5ff;
+$c-blue-4: #69c0ff;
+$c-blue-5: #40a9ff;
+$c-blue-6: #1890ff;
+$c-blue-7: #096dd9;
+$c-blue-8: #0050b3;
+$c-blue-9: #003a8c;
+$c-blue-10: #002766;
+// 橙色系
+$c-orange-1: #fff7e6;
+$c-orange-2: #ffe7ba;
+$c-orange-3: #ffd591;
+$c-orange-4: #ffc069;
+$c-orange-5: #ffa940;
+$c-orange-6: #fa8c16;
+$c-orange-7: #d46b08;
+$c-orange-8: #ad4e00;
+$c-orange-9: #873800;
+$c-orange-10: #612500;
+// 绿色系
+$c-green-1: #f6ffed;
+$c-green-2: #d9f7be;
+$c-green-3: #b7eb8f;
+$c-green-4: #95de64;
+$c-green-5: #73d13d;
+$c-green-6: #52c41a;
+$c-green-7: #389e0d;
+$c-green-8: #237804;
+$c-green-9: #135200;
+$c-green-10: #092b00;
+// 灰色系
+$c-gray-1: #fafafa;
+$c-gray-2: #f5f5f5;
+$c-gray-3: #f0f0f0;
+$c-gray-4: #d9d9d9;
+$c-gray-5: #bfbfbf;
+$c-gray-6: #8c8c8c;
+$c-gray-7: #595959;
+$c-gray-8: #434343;
+$c-gray-9: #262626;
+$c-gray-10: #1f1f1f;
+$c-gray-11: #141414;
 
-/* 一级边框颜色 */
-$border-color-base: #dcdfe6;
-/* 二级边框颜色 */
-$border-color-light: #e4e7ed;
-/* 三级边框颜色 */
-$border-color-lighter: #e4e7ed;
-/* 四级边框颜色 */
-$border-color-extra-light: #f2f6fc;
+// 主题色
+$c-primary: $c-blue-6;
+// 成功颜色
+$c-success: $c-green-6;
+// 警告颜色
+$c-warning: $c-orange-6;
+// 错误颜色
+$c-error: $c-red-6;
+// 信息颜色
+$c-info: $c-gray-6;
+// 主要文字颜色
+$tc-primary: $c-gray-10;
+// 常规文字颜色
+$tc-regular: $c-gray-8;
+// 次要文字颜色
+$tc-secondary: $c-info;
+// 占位文字颜色
+$tc-placeholder: $c-gray-4;
 
-/* 基础白色 */
-$color-white: #fff;
-/* 基础黑色 */
-$color-black: #000;
-/* 基础背景色 */
-$background-color-base: #f5f7fa;
+// 一级边框颜色
+$bc-base: $c-gray-4;
+// 二级边框颜色
+$bc-light: $c-gray-3;
+// 三级边框颜色
+$bc-lighter: $c-gray-2;
+// 四级边框颜色
+$bc-extra-light: $c-gray-1;
 
-$shaow-base: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
-$shaow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+// 基础白色
+$c-white: #ffffff;
+// 基础黑色
+$c-black: #000000;
+// 基础背景色
+$bg-base: $c-gray-2;
+
+// 阴影
+$shaow-1: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0px rgba(0, 0, 0, 0.12),
+	0 5px 12px 4px rgba(0, 0, 0, 0.09);
+$shaow-2: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0px rgba(0, 0, 0, 0.08),
+	0 9px 28px 8px rgba(0, 0, 0, 0.05);
+$shaow-3: 0 6px 16px -8px rgba(0, 0, 0, 0.08),
+	0 9px 28px 0px rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
+
+// 按钮大小
+$btn-mini: 4px 8px;
+$btn-base: 8px 16px;
+$btn-medium: 12px 24px;
+$btn-large: 16px 32px;
+
+// 圆形按钮小
+$btn-c-mini: 6px;
+$btn-c-base: 10px;
+$btn-c-medium: 14px;
+$btn-c-large: 18px;
+
+// 默认圆角
+$radius: 4px;

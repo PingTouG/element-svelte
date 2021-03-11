@@ -58,7 +58,7 @@
 				width: 100%;
 				height: 12.75rem;
 				text-align: center;
-				background-color: rgba($color-primary, 0.03);
+				background-color: rgba($c-primary, 0.03);
 				margin-right: 1.5rem;
 				border-radius: 0.25rem;
 			}
@@ -74,7 +74,7 @@
 			}
 
 			&__desc {
-				color: $color-text-secondary;
+				color: $tc-secondary;
 				font-size: 0.875rem;
 			}
 		}
@@ -98,11 +98,11 @@
 			}
 
 			&__name {
-				color: $color-text-regular;
+				color: $tc-regular;
 			}
 
 			&__content {
-				color: $color-text-secondary;
+				color: $tc-secondary;
 			}
 		}
 	}

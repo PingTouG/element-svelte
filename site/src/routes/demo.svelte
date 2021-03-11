@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button } from '../../../packages/main'
+	import { Button, ButtonGroup } from '../../../packages/main'
 </script>
 
 <div>
@@ -47,10 +47,10 @@
 <div>
 	<h3>按钮大小</h3>
 	<br />
-	<Button size="mini">迷你按钮</Button>
-	<Button>默认按钮</Button>
-	<Button size="medium">中等按钮</Button>
-	<Button size="large">大型按钮</Button>
+	<Button size="mini" type="primary">迷你按钮</Button>
+	<Button type="primary">默认按钮</Button>
+	<Button size="medium" type="primary">中等按钮</Button>
+	<Button size="large" type="primary">大型按钮</Button>
 </div>
 <br />
 <div>
@@ -70,3 +70,24 @@
 	<Button type="text">文字按钮</Button>
 	<Button type="text" disabled>文字按钮</Button>
 </div>
+<br />
+<div>
+	<h3>圆角类型</h3>
+	<br />
+	<Button round>默认按钮</Button>
+	<Button round type="primary">主要按钮</Button>
+	<Button round type="success">成功按钮</Button>
+	<Button round type="error">错误按钮</Button>
+	<Button round type="warning">警告按钮</Button>
+	<Button round type="info">信息按钮</Button>
+</div>
+<br />
+<div>
+	<h3>按钮组</h3>
+	<br />
+	<ButtonGroup>
+		<Button type="primary">主要按钮</Button>
+		<Button type="primary">主要按钮</Button>
+	</ButtonGroup>
+</div>
+<br />

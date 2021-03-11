@@ -145,12 +145,12 @@
 	.nav {
 		&__link {
 			display: block;
-			color: $color-text-primary;
+			color: $tc-primary;
 		}
 
 		&__title {
 			margin: 0;
-			color: $color-text-primary;
+			color: $tc-primary;
 			margin-bottom: 0.875rem;
 		}
 
@@ -158,7 +158,7 @@
 			font-size: 0.875rem;
 
 			&__title {
-				color: $color-text-placeholder;
+				color: $tc-placeholder;
 				margin: 0;
 				margin-bottom: 0.875rem;
 			}
@@ -168,14 +168,14 @@
 			}
 
 			&__link {
-				color: $color-text-regular;
+				color: $tc-regular;
 			}
 		}
 	}
 
 	[aria-current] {
 		position: relative;
-		color: $color-primary;
+		color: $c-primary;
 		font-weight: 500;
 	}
 
@@ -200,10 +200,10 @@
 		text-overflow: ellipsis;
 
 		&__link {
-			color: $color-text-secondary;
+			color: $tc-secondary;
 
 			&:hover {
-				color: $color-primary;
+				color: $c-primary;
 				text-decoration: underline;
 			}
 		}
