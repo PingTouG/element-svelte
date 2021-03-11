@@ -1,7 +1,104 @@
 <script lang="ts">
-	import { Button, ButtonGroup } from '../../../packages/main'
+	import { Button, ButtonGroup, Row, Col } from '../../../packages/main'
 </script>
 
+<div>
+	<h3>Flex布局</h3>
+	<br />
+	<Row type="flex" justify="space-between">
+		<Col>aasd</Col>
+		<Col>aasd</Col>
+		<Col>aasd</Col>
+		<Col>aasd</Col>
+	</Row>
+</div>
+<br />
+<div>
+	<h3>布局</h3>
+	<Row>
+		<Col span="{24}"><div class="grid-content bg-purple-dark"></div></Col>
+	</Row>
+	<br />
+	<Row>
+		<Col span="12"><div class="grid-content bg-purple"></div></Col>
+		<Col span="12"><div class="grid-content bg-purple-light"></div></Col>
+	</Row>
+	<br />
+	<Row>
+		<Col span="8"><div class="grid-content bg-purple"></div></Col>
+		<Col span="8"><div class="grid-content bg-purple-light"></div></Col>
+		<Col span="8"><div class="grid-content bg-purple"></div></Col>
+	</Row>
+	<br />
+	<Row>
+		<Col span="6"><div class="grid-content bg-purple"></div></Col>
+		<Col span="6"><div class="grid-content bg-purple-light"></div></Col>
+		<Col span="6"><div class="grid-content bg-purple"></div></Col>
+		<Col span="6"><div class="grid-content bg-purple-light"></div></Col>
+	</Row>
+	<br />
+	<Row>
+		<Col span="4"><div class="grid-content bg-purple"></div></Col>
+		<Col span="4"><div class="grid-content bg-purple-light"></div></Col>
+		<Col span="4"><div class="grid-content bg-purple"></div></Col>
+		<Col span="4"><div class="grid-content bg-purple-light"></div></Col>
+		<Col span="4"><div class="grid-content bg-purple"></div></Col>
+		<Col span="4"><div class="grid-content bg-purple-light"></div></Col>
+	</Row>
+	<br />
+	<Row gutter="20">
+		<Col span="6"><div class="grid-content bg-purple"></div></Col>
+		<Col span="6"><div class="grid-content bg-purple-light"></div></Col>
+		<Col span="6"><div class="grid-content bg-purple"></div></Col>
+		<Col span="6"><div class="grid-content bg-purple-light"></div></Col>
+	</Row>
+	<br />
+	<Row gutter="20">
+		<Col span="8"><div class="grid-content bg-purple"></div></Col>
+		<Col span="16"><div class="grid-content bg-purple-light"></div></Col>
+	</Row>
+	<br />
+	<Row gutter="20">
+		<Col span="8"><div class="grid-content bg-purple"></div></Col>
+		<Col span="8"><div class="grid-content bg-purple-light"></div></Col>
+		<Col span="4"><div class="grid-content bg-purple"></div></Col>
+		<Col span="4"><div class="grid-content bg-purple-light"></div></Col>
+	</Row>
+	<br />
+	<Row gutter="20">
+		<Col span="6"><div class="grid-content bg-purple"></div></Col>
+		<Col span="6" offset="6">
+			<div class="grid-content bg-purple-light"></div>
+		</Col>
+	</Row>
+	<br />
+	<Row gutter="20">
+		<Col span="6" offset="6"><div class="grid-content bg-purple"></div></Col>
+		<Col span="6" offset="6">
+			<div class="grid-content bg-purple-light"></div>
+		</Col>
+	</Row>
+	<br />
+	<Row gutter="20">
+		<Col span="12" offset="6"><div class="grid-content bg-purple"></div></Col>
+	</Row>
+	<br />
+	<Row gutter="20">
+		<Col span="6"><div class="grid-content bg-purple"></div></Col>
+		<Col span="6" push="6">
+			<div class="grid-content bg-purple-light"></div>
+		</Col>
+	</Row>
+	<br />
+	<Row gutter="20">
+		<Col span="6"><div class="grid-content bg-purple"></div></Col>
+		<Col span="12" pull="4">
+			<div class="grid-content bg-purple-light"></div>
+		</Col>
+	</Row>
+	<br />
+</div>
+<br />
 <div>
 	<h3>块级按钮</h3>
 	<br />
@@ -91,3 +188,22 @@
 	</ButtonGroup>
 </div>
 <br />
+
+<style>
+	.bg-purple-dark {
+		background: #99a9bf;
+	}
+
+	.bg-purple {
+		background: #d3dce6;
+	}
+
+	.bg-purple-light {
+		background: #e5e9f2;
+	}
+
+	.grid-content {
+		border-radius: 4px;
+		min-height: 36px;
+	}
+</style>

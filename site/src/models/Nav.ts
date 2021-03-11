@@ -53,6 +53,11 @@ export const headerNavModel: Array<Nav> = [
 		description:
 			'下载相关资源，用其快速搭建页面原型或高保真视觉稿，提升产品设计效率。',
 	},
+	{
+		key: 'demo',
+		name: '例子',
+		url: 'demo',
+	},
 ]
 
 export const componentNavModel: Array<ComponentNav> = [

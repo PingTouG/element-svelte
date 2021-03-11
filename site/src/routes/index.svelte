@@ -30,12 +30,14 @@
 	</div>
 	<div class="quick">
 		{#each headerNavModel as nav (nav.key)}
-			<div class="quick__item">
-				<img class="quick__icon" src="{nav.icon}" alt="{nav.key}" />
-				<h3 class="quick__name">{nav.name}</h3>
-				<p class="quick__description">{nav.description}</p>
-				<a class="quick__url" href="{nav.url}">查看详情</a>
-			</div>
+			{#if nav.icon}
+				<div class="quick__item">
+					<img class="quick__icon" src="{nav.icon}" alt="{nav.key}" />
+					<h3 class="quick__name">{nav.name}</h3>
+					<p class="quick__description">{nav.description}</p>
+					<a class="quick__url" href="{nav.url}">查看详情</a>
+				</div>
+			{/if}
 		{/each}
 	</div>
 </div>
