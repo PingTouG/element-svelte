@@ -1,4 +1,4 @@
-import { _ as _inherits, a as _getPrototypeOf, b as _possibleConstructorReturn, c as _classCallCheck, i as init, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as add_render_callback, v as validate_each_argument, g as validate_each_keys, s as safe_not_equal, h as element, j as space, t as text, k as claim_element, l as children, m as claim_space, n as claim_text, o as detach_dev, p as attr_dev, q as add_location, r as insert_dev, u as append_dev, w as headerNavModel, x as query_selector_all, y as listen_dev, z as _slicedToArray, A as update_keyed_each, B as noop, C as validate_slots, D as destroy_block } from './client.9568ff78.js';
+import { _ as _inherits, a as _getPrototypeOf, b as _possibleConstructorReturn, c as _classCallCheck, i as init, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as add_render_callback, v as validate_each_argument, g as validate_each_keys, s as safe_not_equal, h as empty, j as insert_dev, k as detach_dev, l as headerNavModel, m as space, n as element, t as text, q as query_selector_all, o as claim_space, p as claim_element, r as children, u as claim_text, w as attr_dev, x as add_location, y as append_dev, z as listen_dev, A as _slicedToArray, B as update_keyed_each, C as noop, D as validate_slots, E as destroy_block } from './client.c0fb24e8.js';
 
 var blueTheme = "/client/02fa866fe73e3630.png";
 
@@ -13,10 +13,10 @@ function get_each_context(ctx, list, i) {
   var child_ctx = ctx.slice();
   child_ctx[3] = list[i];
   return child_ctx;
-} // (30:2) {#each headerNavModel as nav (nav.key)}
+} // (31:3) {#if nav.icon}
 
 
-function create_each_block(key_1, ctx) {
+function create_if_block(ctx) {
   var div;
   var img;
   var img_src_value;
@@ -37,8 +37,6 @@ function create_each_block(key_1, ctx) {
   var t5;
   var t6;
   var block = {
-    key: key_1,
-    first: null,
     c: function create() {
       div = element("div");
       img = element("img");
@@ -97,18 +95,17 @@ function create_each_block(key_1, ctx) {
       ctx[3].icon)) attr_dev(img, "src", img_src_value);
       attr_dev(img, "alt", /*nav*/
       ctx[3].key);
-      add_location(img, file, 31, 4, 831);
+      add_location(img, file, 32, 5, 851);
       attr_dev(h3, "class", "quick__name svelte-1gtk3xy");
-      add_location(h3, file, 32, 4, 896);
+      add_location(h3, file, 33, 5, 917);
       attr_dev(p, "class", "quick__description svelte-1gtk3xy");
-      add_location(p, file, 33, 4, 940);
+      add_location(p, file, 34, 5, 962);
       attr_dev(a, "class", "quick__url svelte-1gtk3xy");
       attr_dev(a, "href", /*nav*/
       ctx[3].url);
-      add_location(a, file, 34, 4, 996);
+      add_location(a, file, 35, 5, 1019);
       attr_dev(div, "class", "quick__item svelte-1gtk3xy");
-      add_location(div, file, 30, 3, 801);
-      this.first = div;
+      add_location(div, file, 31, 4, 820);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -124,11 +121,61 @@ function create_each_block(key_1, ctx) {
       append_dev(a, t5);
       append_dev(div, t6);
     },
-    p: function update(new_ctx, dirty) {
-      ctx = new_ctx;
-    },
+    p: noop,
     d: function destroy(detaching) {
       if (detaching) detach_dev(div);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_if_block.name,
+    type: "if",
+    source: "(31:3) {#if nav.icon}",
+    ctx: ctx
+  });
+  return block;
+} // (30:2) {#each headerNavModel as nav (nav.key)}
+
+
+function create_each_block(key_1, ctx) {
+  var first;
+  var if_block_anchor;
+  var if_block =
+  /*nav*/
+  ctx[3].icon && create_if_block(ctx);
+  var block = {
+    key: key_1,
+    first: null,
+    c: function create() {
+      first = empty();
+      if (if_block) if_block.c();
+      if_block_anchor = empty();
+      this.h();
+    },
+    l: function claim(nodes) {
+      first = empty();
+      if (if_block) if_block.l(nodes);
+      if_block_anchor = empty();
+      this.h();
+    },
+    h: function hydrate() {
+      this.first = first;
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, first, anchor);
+      if (if_block) if_block.m(target, anchor);
+      insert_dev(target, if_block_anchor, anchor);
+    },
+    p: function update(new_ctx, dirty) {
+      ctx = new_ctx;
+      if (
+      /*nav*/
+      ctx[3].icon) if_block.p(ctx, dirty);
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(first);
+      if (if_block) if_block.d(detaching);
+      if (detaching) detach_dev(if_block_anchor);
     }
   };
   dispatch_dev("SvelteRegisterBlock", {

@@ -1178,6 +1178,10 @@ function afterUpdate(fn) {
 function setContext(key, context) {
   get_current_component().$$.context.set(key, context);
 }
+
+function getContext(key) {
+  return get_current_component().$$.context.get(key);
+}
 // shorthand events, or if we want to implement
 // a real bubbling mechanism
 
@@ -1875,6 +1879,11 @@ const headerNavModel = [
         url: 'resource',
         description: '下载相关资源，用其快速搭建页面原型或高保真视觉稿，提升产品设计效率。',
     },
+    {
+        key: 'demo',
+        name: '例子',
+        url: 'demo',
+    },
 ];
 const componentNavModel = [
     {
@@ -2193,6 +2202,23 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
+/**
+ * 有条件的拼接前缀
+ * @param val 判断条件
+ * @param preffix 拼接前缀
+ * @param concatVal 要拼接的内容，为空则用val拼接
+ * @returns 拼接结果
+ */
+const preffixConcat = (val, preffix, concatVal = undefined) =>
+	!!val ? `${preffix}${concatVal ? concatVal : val}` : '';
+
+/**
+ * 拼接并移除左右空白
+ * @param args 要拼接的内容
+ * @returns
+ */
+const trimConcat = (...args) => args.join(' ').trim();
+
 function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
@@ -2200,8 +2226,6 @@ var file$2 = "..\\packages\\Icon\\index.svelte";
 
 function create_fragment$3(ctx) {
   var i;
-  var i_class_value;
-  var i_style_value;
   var block = {
     c: function create() {
       i = element("i");
@@ -2216,21 +2240,13 @@ function create_fragment$3(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(i, "class", i_class_value = "iconfont " +
-      /*className*/
-      ctx[3] + " " + (
-      /*name*/
-      ctx[1] ? "icon-".concat(
-      /*name*/
-      ctx[1]) : ""));
-      attr_dev(i, "style", i_style_value = "font-size: ".concat(
-      /*size*/
-      ctx[2], ";").concat(
-      /*color*/
-      ctx[0] ? "color: ".concat(
-      /*color*/
-      ctx[0], ";") : ""));
-      add_location(i, file$2, 7, 0, 146);
+      attr_dev(i, "class",
+      /*classAttr*/
+      ctx[1]);
+      attr_dev(i, "style",
+      /*style*/
+      ctx[0]);
+      add_location(i, file$2, 10, 0, 360);
     },
     m: function mount(target, anchor) {
       insert_dev(target, i, anchor);
@@ -2240,27 +2256,11 @@ function create_fragment$3(ctx) {
           dirty = _ref2[0];
 
       if (dirty &
-      /*className, name*/
-      10 && i_class_value !== (i_class_value = "iconfont " +
-      /*className*/
-      ctx[3] + " " + (
-      /*name*/
-      ctx[1] ? "icon-".concat(
-      /*name*/
-      ctx[1]) : ""))) {
-        attr_dev(i, "class", i_class_value);
-      }
-
-      if (dirty &
-      /*size, color*/
-      5 && i_style_value !== (i_style_value = "font-size: ".concat(
-      /*size*/
-      ctx[2], ";").concat(
-      /*color*/
-      ctx[0] ? "color: ".concat(
-      /*color*/
-      ctx[0], ";") : ""))) {
-        attr_dev(i, "style", i_style_value);
+      /*style*/
+      1) {
+        attr_dev(i, "style",
+        /*style*/
+        ctx[0]);
       }
     },
     i: noop,
@@ -2280,49 +2280,64 @@ function create_fragment$3(ctx) {
 }
 
 function instance$3($$self, $$props, $$invalidate) {
+  var style;
   var _$$props$$$slots = $$props.$$slots,
       slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
       $$props.$$scope;
   validate_slots("Icon", slots, []);
+  var _$$props$class = $$props.class,
+      className = _$$props$class === void 0 ? "" : _$$props$class;
   var color = $$props.color;
   var name = $$props.name;
   var _$$props$size = $$props.size,
       size = _$$props$size === void 0 ? "16px" : _$$props$size;
-  var _$$props$class = $$props.class,
-      className = _$$props$class === void 0 ? "" : _$$props$class;
-  var writable_props = ["color", "name", "size", "class"];
+  var classAttr = trimConcat("iconfont", className, preffixConcat(name, "icon-"));
+  var writable_props = ["class", "color", "name", "size"];
   Object.keys($$props).forEach(function (key) {
     if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Icon> was created with unknown prop '".concat(key, "'"));
   });
 
   $$self.$$set = function ($$props) {
-    if ("color" in $$props) $$invalidate(0, color = $$props.color);
-    if ("name" in $$props) $$invalidate(1, name = $$props.name);
-    if ("size" in $$props) $$invalidate(2, size = $$props.size);
-    if ("class" in $$props) $$invalidate(3, className = $$props.class);
+    if ("class" in $$props) $$invalidate(2, className = $$props.class);
+    if ("color" in $$props) $$invalidate(3, color = $$props.color);
+    if ("name" in $$props) $$invalidate(4, name = $$props.name);
+    if ("size" in $$props) $$invalidate(5, size = $$props.size);
   };
 
   $$self.$capture_state = function () {
     return {
+      preffixConcat: preffixConcat,
+      trimConcat: trimConcat,
+      className: className,
       color: color,
       name: name,
       size: size,
-      className: className
+      classAttr: classAttr,
+      style: style
     };
   };
 
   $$self.$inject_state = function ($$props) {
-    if ("color" in $$props) $$invalidate(0, color = $$props.color);
-    if ("name" in $$props) $$invalidate(1, name = $$props.name);
-    if ("size" in $$props) $$invalidate(2, size = $$props.size);
-    if ("className" in $$props) $$invalidate(3, className = $$props.className);
+    if ("className" in $$props) $$invalidate(2, className = $$props.className);
+    if ("color" in $$props) $$invalidate(3, color = $$props.color);
+    if ("name" in $$props) $$invalidate(4, name = $$props.name);
+    if ("size" in $$props) $$invalidate(5, size = $$props.size);
+    if ("style" in $$props) $$invalidate(0, style = $$props.style);
   };
 
   if ($$props && "$$inject" in $$props) {
     $$self.$inject_state($$props.$$inject);
   }
 
-  return [color, name, size, className];
+  $$self.$$.update = function () {
+    if ($$self.$$.dirty &
+    /*size, color*/
+    40) {
+      $$invalidate(0, style = "font-size: ".concat(size, ";").concat(preffixConcat(color, "color: ")));
+    }
+  };
+
+  return [style, classAttr, className, color, name, size];
 }
 
 var Icon = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -2337,10 +2352,10 @@ var Icon = /*#__PURE__*/function (_SvelteComponentDev) {
 
     _this = _super.call(this, options);
     init$1(_assertThisInitialized(_this), options, instance$3, create_fragment$3, safe_not_equal, {
-      color: 0,
-      name: 1,
-      size: 2,
-      class: 3
+      class: 2,
+      color: 3,
+      name: 4,
+      size: 5
     });
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
@@ -2353,13 +2368,13 @@ var Icon = /*#__PURE__*/function (_SvelteComponentDev) {
 
     if (
     /*color*/
-    ctx[0] === undefined && !("color" in props)) {
+    ctx[3] === undefined && !("color" in props)) {
       console.warn("<Icon> was created without expected prop 'color'");
     }
 
     if (
     /*name*/
-    ctx[1] === undefined && !("name" in props)) {
+    ctx[4] === undefined && !("name" in props)) {
       console.warn("<Icon> was created without expected prop 'name'");
     }
 
@@ -2367,6 +2382,14 @@ var Icon = /*#__PURE__*/function (_SvelteComponentDev) {
   }
 
   _createClass(Icon, [{
+    key: "class",
+    get: function get() {
+      throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    },
+    set: function set(value) {
+      throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    }
+  }, {
     key: "color",
     get: function get() {
       throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
@@ -2384,14 +2407,6 @@ var Icon = /*#__PURE__*/function (_SvelteComponentDev) {
     }
   }, {
     key: "size",
-    get: function get() {
-      throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    },
-    set: function set(value) {
-      throw new Error("<Icon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    }
-  }, {
-    key: "class",
     get: function get() {
       throw new Error("<Icon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     },
@@ -4375,35 +4390,35 @@ var App = /*#__PURE__*/function (_SvelteComponentDev) {
 var ignore = [/^\/component\/([^/]+?)\.json$/];
 var components = [{
   js: function js() {
-    return Promise.all([import('./index.facab73c.js'), __inject_styles(["client-694e4bf8.css","index-56fb6339.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.0bb551b3.js'), __inject_styles(["client-03b0c6ae.css","index-56fb6339.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./_layout.6d3d06f2.js'), __inject_styles(["client-694e4bf8.css","_layout-257a2352.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./_layout.e42f1a94.js'), __inject_styles(["client-03b0c6ae.css","_layout-257a2352.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./[page].c5dae2a2.js'), __inject_styles(["client-694e4bf8.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./[page].2c23f788.js'), __inject_styles(["client-03b0c6ae.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./index.68d1ac16.js'), __inject_styles(["client-694e4bf8.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.9302bab9.js'), __inject_styles(["client-03b0c6ae.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./_layout.3aa297df.js'), __inject_styles(["client-694e4bf8.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./_layout.628a02b6.js'), __inject_styles(["client-03b0c6ae.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./design.fdeebf29.js'), __inject_styles(["client-694e4bf8.css","design-5725dfd0.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./design.8959b14e.js'), __inject_styles(["client-03b0c6ae.css","design-5725dfd0.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./index.95cb7644.js'), __inject_styles(["client-694e4bf8.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.dd1d2f6c.js'), __inject_styles(["client-03b0c6ae.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./demo.c3119e6d.js'), __inject_styles(["client-694e4bf8.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./demo.4cdcc1d4.js'), __inject_styles(["client-03b0c6ae.css","demo-98d28e62.css"])]).then(function(x) { return x[0]; });
   }
 }];
 var routes = function (d) {
@@ -5341,6 +5356,6 @@ start$1({
     target: document.querySelector('#sapper'),
 });
 
-export { create_component as $, update_keyed_each as A, noop as B, validate_slots as C, destroy_block as D, _createClass$1 as E, isUndef as F, create_slot as G, empty as H, prevent_default as I, set_data_dev as J, componentNavModel as K, toggle_class as L, update_slot as M, transition_in as N, transition_out as O, getBrotherPage as P, goto as Q, regenerator as R, SvelteComponentDev as S, _inherits as T, _getPrototypeOf as U, _possibleConstructorReturn as V, _classCallCheck as W, _assertThisInitialized as X, _createClass as Y, Icon as Z, _inherits$1 as _, _getPrototypeOf$1 as a, claim_component as a0, mount_component as a1, destroy_component as a2, _slicedToArray as a3, group_outros as a4, check_outros as a5, prop_dev as a6, bubble as a7, _possibleConstructorReturn$1 as b, _classCallCheck$1 as c, _assertThisInitialized$1 as d, dispatch_dev as e, add_render_callback as f, validate_each_keys as g, element as h, init$1 as i, space as j, claim_element as k, children as l, claim_space as m, claim_text as n, detach_dev as o, attr_dev as p, add_location as q, insert_dev as r, safe_not_equal as s, text as t, append_dev as u, validate_each_argument as v, headerNavModel as w, query_selector_all as x, listen_dev as y, _slicedToArray$1 as z };
+export { Icon as $, _slicedToArray$1 as A, update_keyed_each as B, noop as C, validate_slots as D, destroy_block as E, _createClass$1 as F, isUndef as G, create_slot as H, prevent_default as I, set_data_dev as J, componentNavModel as K, toggle_class as L, update_slot as M, transition_in as N, transition_out as O, getBrotherPage as P, goto as Q, regenerator as R, SvelteComponentDev as S, _inherits as T, _getPrototypeOf as U, _possibleConstructorReturn as V, _classCallCheck as W, _assertThisInitialized as X, _createClass as Y, trimConcat as Z, _inherits$1 as _, _getPrototypeOf$1 as a, preffixConcat as a0, create_component as a1, claim_component as a2, mount_component as a3, destroy_component as a4, _slicedToArray as a5, group_outros as a6, check_outros as a7, prop_dev as a8, bubble as a9, setContext as aa, getContext as ab, _possibleConstructorReturn$1 as b, _classCallCheck$1 as c, _assertThisInitialized$1 as d, dispatch_dev as e, add_render_callback as f, validate_each_keys as g, empty as h, init$1 as i, insert_dev as j, detach_dev as k, headerNavModel as l, space as m, element as n, claim_space as o, claim_element as p, query_selector_all as q, children as r, safe_not_equal as s, text as t, claim_text as u, validate_each_argument as v, attr_dev as w, add_location as x, append_dev as y, listen_dev as z };
 
 import __inject_styles from './inject_styles.fe622066.js';
