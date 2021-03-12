@@ -1,102 +1,35 @@
 <script lang="ts">
-	import {
-		Container,
-		Aside,
-		Header,
-		Main,
-		Footer,
-	} from '../../../packages/main'
+	import { Link, Icon } from '../../../packages/main'
 </script>
 
 <br />
 <div>
-	<h3>布局容器</h3>
-	<Container>
-		<Header class="bg-purple-dark">Header</Header>
-		<Main class="bg-purple">Main</Main>
-	</Container>
-
-	<Container>
-		<Header>Header</Header>
-		<Main>Main</Main>
-		<Footer>Footer</Footer>
-	</Container>
-
-	<Container>
-		<Aside width="200px">Aside</Aside>
-		<Main>Main</Main>
-	</Container>
-
-	<Container>
-		<Header>Header</Header>
-		<Container>
-			<Aside width="200px">Aside</Aside>
-			<Main>Main</Main>
-		</Container>
-	</Container>
-
-	<Container>
-		<Header>Header</Header>
-		<Container>
-			<Aside width="200px">Aside</Aside>
-			<Container>
-				<Main>Main</Main>
-				<Footer>Footer</Footer>
-			</Container>
-		</Container>
-	</Container>
-
-	<Container>
-		<Aside width="200px">Aside</Aside>
-		<Container>
-			<Header>Header</Header>
-			<Main>Main</Main>
-		</Container>
-	</Container>
-
-	<Container>
-		<Aside width="200px">Aside</Aside>
-		<Container>
-			<Header>Header</Header>
-			<Main>Main</Main>
-			<Footer>Footer</Footer>
-		</Container>
-	</Container>
+	<h3>链接</h3>
+	<div>
+		<Link href="https://element.eleme.io" target="_blank">默认链接</Link>
+		<Link type="primary">主要链接</Link>
+		<Link type="success">成功链接</Link>
+		<Link type="warning">警告链接</Link>
+		<Link type="error">危险链接</Link>
+		<Link type="info">信息链接</Link>
+	</div>
 </div>
-
-<style global>
-	.es-header,
-	.es-footer {
-		background-color: #b3c0d1;
-		color: #333;
-		text-align: center;
-		line-height: 60px;
-	}
-
-	.es-aside {
-		background-color: #d3dce6;
-		color: #333;
-		text-align: center;
-		line-height: 200px;
-	}
-
-	.es-main {
-		background-color: #e9eef3;
-		color: #333;
-		text-align: center;
-		line-height: 160px;
-	}
-
-	body > .es-container {
-		margin-bottom: 40px;
-	}
-
-	.es-container:nth-child(5) .es-aside,
-	.es-container:nth-child(6) .es-aside {
-		line-height: 260px;
-	}
-
-	.es-container:nth-child(7) .es-aside {
-		line-height: 320px;
-	}
-</style>
+<br />
+<div>
+	<Link disabled>默认链接</Link>
+	<Link type="primary" disabled>主要链接</Link>
+	<Link type="success" disabled>成功链接</Link>
+	<Link type="warning" disabled>警告链接</Link>
+	<Link type="error" disabled>危险链接</Link>
+	<Link type="info" disabled>信息链接</Link>
+</div>
+<br />
+<div>
+	<Link underline="{false}">无下划线</Link>
+	<Link>有下划线</Link>
+</div>
+<br />
+<div>
+	<Link icon="editor">编辑</Link>
+	<Link>分享<Icon name="resonserate" /></Link>
+</div>
