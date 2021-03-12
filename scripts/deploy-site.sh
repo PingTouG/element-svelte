@@ -1,3 +1,4 @@
+rm -rf site/__sapper__/export && 
 npm run export:site && 
 git add site/__sapper__/export && 
 git commit -m "deploy site" &&
