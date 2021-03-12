@@ -1,0 +1,33 @@
+@import '../styles/vars';
+@import './mixin';
+
+.es-link {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	text-decoration: none;
+	outline: none;
+	cursor: pointer;
+	padding: 0;
+	font-size: 14px;
+	font-weight: 500;
+	@include link($tc-primary, $c-primary, $c-gray-4);
+
+	@each $type, $color, $hover-color,
+		$disabled-color in (primary, $c-primary, $c-blue-5, $c-blue-3),
+		(success, $c-success, $c-green-5, $c-green-3),
+		(error, $c-error, $c-red-5, $c-red-3),
+		(warning, $c-warning, $c-orange-5, $c-orange-3),
+		(info, $c-info, $c-gray-5, $c-gray-4)
+	{
+		&.link-type-#{$type} {
+			@include link($color, $hover-color, $disabled-color);
+		}
+	}
+
+	& [class*='es-icon-'] + span {
+		margin-left: 5px;
+	}
+}
