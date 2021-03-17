@@ -10,8 +10,8 @@
 	export let justify = 'start'
 	export let align = 'top'
 
-	const isFlex = type === 'flex'
-	const classAttr = trimConcat(
+	$: isFlex = type === 'flex'
+	$: classAttr = trimConcat(
 		'es-row',
 		className,
 		preffixConcat(isFlex, '', type),
