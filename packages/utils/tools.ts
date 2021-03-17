@@ -5,7 +5,7 @@
  * @param concatVal 要拼接的内容，为空则用val拼接
  * @returns 拼接结果
  */
-export const preffixConcat = (val, preffix, concatVal = undefined) =>
+export const preffixConcat = (val, preffix = '', concatVal = undefined) =>
 	!!val ? `${preffix}${concatVal ? concatVal : val}` : ''
 
 /**

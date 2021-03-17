@@ -11,11 +11,7 @@
 	export let size: string
 
 	$: checked = value === label
-	$: classAttr = trimConcat(
-		'es-radio-button',
-		className,
-		preffixConcat(size, ''),
-	)
+	$: classAttr = trimConcat('es-radio-button', className, preffixConcat(size))
 
 	const dispatch = createEventDispatcher()
 	const onClick = () => {

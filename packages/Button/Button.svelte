@@ -18,7 +18,7 @@
 	$: classAttr = trimConcat(
 		'es-button',
 		className,
-		preffixConcat(size, ''),
+		preffixConcat(size),
 		preffixConcat(type, 'type-'),
 	)
 </script>
