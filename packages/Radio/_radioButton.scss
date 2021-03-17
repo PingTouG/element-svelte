@@ -1,0 +1,39 @@
+@import '../styles/vars';
+@import '../styles/mixin';
+
+.es-radio-button {
+	display: inline-block;
+	padding: $btn-base;
+	cursor: pointer;
+	border: 1px solid $bc-light;
+	margin-right: -5px;
+
+	&:first-child {
+		border-radius: $radius 0 0 $radius;
+	}
+
+	&:last-child {
+		border-radius: 0 $radius $radius 0;
+	}
+
+	&.checked {
+		background-color: $c-primary;
+		color: $c-white;
+
+		&.disabled {
+			color: $tc-placeholder;
+			background-color: $bg-base;
+		}
+	}
+
+	&.disabled {
+		cursor: not-allowed;
+		color: $tc-placeholder;
+	}
+
+	@each $size in mini, medium, large {
+		&.#{$size} {
+			@include size($size);
+		}
+	}
+}
