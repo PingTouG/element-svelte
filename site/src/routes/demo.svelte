@@ -1,35 +1,174 @@
 <script lang="ts">
-	import { Link, Icon } from '../../../packages/main'
+	import { Radio, RadioButton } from '../../../packages/main'
+
+	let radio = '1'
+
+	function onClick() {
+		console.log(radio)
+	}
 </script>
 
-<br />
 <div>
-	<h3>链接</h3>
+	<h3>单选按钮样式</h3>
+	<br />
 	<div>
-		<Link href="https://element.eleme.io" target="_blank">默认链接</Link>
-		<Link type="primary">主要链接</Link>
-		<Link type="success">成功链接</Link>
-		<Link type="warning">警告链接</Link>
-		<Link type="error">危险链接</Link>
-		<Link type="info">信息链接</Link>
+		<RadioButton
+			bind:value="{radio}"
+			label="1"
+			size="mini"
+			disabled
+			on:click="{onClick}"
+		>
+			选项1
+		</RadioButton>
+		<RadioButton
+			bind:value="{radio}"
+			label="2"
+			size="mini"
+			disabled
+			on:click="{onClick}"
+		>
+			选项2
+		</RadioButton>
+		<RadioButton
+			bind:value="{radio}"
+			label="3"
+			size="mini"
+			disabled
+			on:click="{onClick}"
+		>
+			选项3
+		</RadioButton>
+	</div>
+	<br />
+	<div>
+		<RadioButton bind:value="{radio}" label="1" on:click="{onClick}">
+			选项1
+		</RadioButton>
+		<RadioButton bind:value="{radio}" label="2" on:click="{onClick}">
+			选项2
+		</RadioButton>
+		<RadioButton bind:value="{radio}" label="3" on:click="{onClick}">
+			选项3
+		</RadioButton>
+	</div>
+	<br />
+	<div>
+		<RadioButton
+			bind:value="{radio}"
+			label="1"
+			size="medium"
+			on:click="{onClick}"
+		>
+			选项1
+		</RadioButton>
+		<RadioButton
+			bind:value="{radio}"
+			label="2"
+			size="medium"
+			on:click="{onClick}"
+		>
+			选项2
+		</RadioButton>
+		<RadioButton
+			bind:value="{radio}"
+			label="3"
+			size="medium"
+			on:click="{onClick}"
+		>
+			选项3
+		</RadioButton>
+	</div>
+	<br />
+	<div>
+		<RadioButton
+			bind:value="{radio}"
+			label="1"
+			size="large"
+			on:click="{onClick}"
+		>
+			选项1
+		</RadioButton>
+		<RadioButton
+			bind:value="{radio}"
+			label="2"
+			size="large"
+			on:click="{onClick}"
+		>
+			选项2
+		</RadioButton>
+		<RadioButton
+			bind:value="{radio}"
+			label="3"
+			size="large"
+			on:click="{onClick}"
+		>
+			选项3
+		</RadioButton>
 	</div>
 </div>
 <br />
 <div>
-	<Link disabled>默认链接</Link>
-	<Link type="primary" disabled>主要链接</Link>
-	<Link type="success" disabled>成功链接</Link>
-	<Link type="warning" disabled>警告链接</Link>
-	<Link type="error" disabled>危险链接</Link>
-	<Link type="info" disabled>信息链接</Link>
-</div>
-<br />
-<div>
-	<Link underline="{false}">无下划线</Link>
-	<Link>有下划线</Link>
-</div>
-<br />
-<div>
-	<Link icon="editor">编辑</Link>
-	<Link>分享<Icon name="resonserate" /></Link>
+	<h3>单选</h3>
+	<br />
+	<div>
+		<Radio bind:value="{radio}" label="1" on:click="{onClick}">选项1</Radio>
+		<Radio bind:value="{radio}" label="2" on:click="{onClick}">选项2</Radio>
+	</div>
+	<br />
+	<div>
+		<Radio bind:value="{radio}" label="1" disabled>选项1</Radio>
+		<Radio bind:value="{radio}" label="2" disabled>选项2</Radio>
+	</div>
+	<br />
+	<div>
+		<Radio bind:value="{radio}" label="1" border on:click="{onClick}">
+			选项1
+		</Radio>
+		<Radio bind:value="{radio}" label="2" border on:click="{onClick}">
+			选项2
+		</Radio>
+	</div>
+	<br />
+	<div>
+		<Radio bind:value="{radio}" label="1" border disabled on:click="{onClick}">
+			选项1
+		</Radio>
+		<Radio bind:value="{radio}" label="2" border disabled on:click="{onClick}">
+			选项2
+		</Radio>
+	</div>
+	<br />
+	<div>
+		<Radio
+			bind:value="{radio}"
+			label="1"
+			border
+			size="mini"
+			on:click="{onClick}"
+		>
+			选项1
+		</Radio>
+		<Radio bind:value="{radio}" label="2" border on:click="{onClick}">
+			选项2
+		</Radio>
+		<Radio
+			bind:value="{radio}"
+			label="3"
+			border
+			size="medium"
+			on:click="{onClick}"
+		>
+			选项3
+		</Radio>
+		<Radio
+			bind:value="{radio}"
+			label="4"
+			border
+			size="large"
+			on:click="{onClick}"
+		>
+			选项4
+		</Radio>
+	</div>
 </div>
