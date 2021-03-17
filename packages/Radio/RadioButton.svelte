@@ -22,8 +22,21 @@
 	}
 </script>
 
-<div class="{classAttr}" class:checked class:disabled on:click="{onClick}">
-	<input class="es-radio-button__input" type="radio" name="{name}" hidden />
+<div
+	class="{classAttr}"
+	class:checked
+	class:disabled
+	aria-disabled="{disabled}"
+	aria-checked="{checked}"
+	on:click="{onClick}"
+>
+	<input
+		class="es-radio-button__input"
+		type="radio"
+		name="{name}"
+		hidden
+		aria-hidden="hidden"
+	/>
 	<span class="es-radio-button__label">
 		<slot />
 		{#if !$$slots.default}

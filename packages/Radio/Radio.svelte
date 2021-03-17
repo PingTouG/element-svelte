@@ -32,10 +32,18 @@
 	class:disabled
 	class:border
 	class:checked
+	aria-disabled="{disabled}"
+	aria-checked="{checked}"
 	role="radio"
 	on:click="{onClick}"
 >
-	<input class="es-radio__input" type="radio" name="{name}" hidden />
+	<input
+		class="es-radio__input"
+		type="radio"
+		name="{name}"
+		hidden
+		aria-hidden="hidden"
+	/>
 	<div class="es-radio__container">
 		<span class="es-radio__label" class:checked>
 			<slot />
