@@ -1,0 +1,94 @@
+@import '../styles/vars';
+@import '../styles/mixin';
+
+$cricleSize: 12px;
+
+.es-radio {
+	color: $tc-primary;
+	font-weight: 500;
+	line-height: 1;
+	cursor: pointer;
+	font-size: 14px;
+	user-select: none;
+	margin-right: 12px;
+
+	&__container {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		padding-left: 24px;
+	}
+
+	&:last-child {
+		margin-right: 0;
+	}
+
+	&.disabled {
+		cursor: not-allowed;
+		color: $tc-placeholder;
+
+		.es-radio__label {
+			&::before {
+				border-color: $bc-base;
+				background-color: $bg-base;
+			}
+			&::after {
+				background-color: $c-gray-5;
+			}
+		}
+	}
+
+	&.border {
+		padding: $btn-base;
+		border: 1px solid $c-primary;
+		border-radius: $radius;
+
+		@each $size in mini, medium, large {
+			&.#{$size} {
+				@include size($size);
+			}
+		}
+
+		&.disabled {
+			border-color: $bc-light;
+		}
+	}
+
+	&__label {
+		&:hover::before {
+			border-color: $c-primary;
+		}
+
+		&::before {
+			content: '';
+			display: inline-block;
+			height: $cricleSize;
+			width: $cricleSize;
+			border: 1px solid $bc-base;
+			border-radius: 50%;
+			margin-right: 8px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: all 0.2s;
+		}
+
+		&.checked {
+			&::before {
+				border-color: transparent;
+				background-color: $c-primary;
+			}
+			&::after {
+				content: '';
+				display: inline-block;
+				height: 4px;
+				width: 4px;
+				border-radius: 50%;
+				background-color: #fff;
+				position: absolute;
+				top: $cricleSize - 7px;
+				left: $cricleSize - 7px;
+			}
+		}
+	}
+}
