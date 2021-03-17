@@ -1,177 +1,130 @@
 @import './vars';
 
-/* 按钮样式 */
-@mixin button($color) {
-	color: $color-white;
-	background-color: $color;
-	border-color: $color;
-
-	&:hover {
-		color: $color-white;
-		background-color: rgba($color, 0.8);
-		border-color: transparent;
-	}
-}
-
-/* 按钮大小样式 */
-@mixin button-size($paddingBoth: 12px, $paddingUpDown: 20px) {
-	padding: $paddingBoth $paddingUpDown;
-}
-
-/* 朴素样式 */
-@mixin is-plain($color) {
-	&.is-plain {
-		color: $color;
-		background-color: rgba($color, 0.1);
-		border-color: rgba($color, 0.2);
-
-		&:hover {
-			color: $color-white;
-			border-color: transparent;
-			background-color: $color;
-		}
-	}
-}
-
-/* 不可用样式 */
-@mixin is-disabled($color, $type) {
-	&.is-disabled {
-		cursor: not-allowed;
-
-		@if $type == button {
-			color: $color-white;
-			background-color: rgba($color, 0.5);
-			border-color: rgba($color, 0);
-
-			&:hover {
-				color: $color-white;
-				background-color: rgba($color, 0.5);
-				border-color: rgba($color, 0);
-			}
-		} @else if $type == link {
-			color: rgba($color, 0.5);
-
-			&:hover {
-				color: rgba($color, 0.5);
-				text-decoration: none;
-			}
+@mixin size($size: base, $circle: false) {
+	@if $circle == true {
+		@if $size == mini {
+			padding: $btn-c-mini;
+		} @else if $size == medium {
+			padding: $btn-c-medium;
+		} @else if $size == large {
+			padding: $btn-c-large;
 		} @else {
-			@error "值#{$type} 不在$type取值范围内，$type 取值范围：[button,link]";
+			padding: $btn-c-base;
+		}
+	} @else {
+		@if $size == mini {
+			padding: $btn-mini;
+		} @else if $size == medium {
+			padding: $btn-medium;
+		} @else if $size == large {
+			padding: $btn-large;
+		} @else {
+			padding: $btn-base;
 		}
 	}
 }
 
-/* 圆形样式 */
-@mixin is-circle {
-	&.is-circle {
-		border-radius: 50%;
-		padding: 12px;
-	}
-}
-
-/* 输入框样式 */
-
-@mixin input(
-	$height,
-	$paddingTop: 0,
-	$paddingRight: 0,
-	$paddingBottom: $paddingTop,
-	$paddingLeft: $paddingRight,
-	$type: input
+@mixin type(
+	$type: base,
+	$color: base,
+	$hover-bg: base,
+	$disabled-hover-bg: base,
+	$plain-bg: base,
+	$plain-bc: base,
+	$plain-active-bg: base
 ) {
-	position: relative;
-	font-size: 14px;
-	display: inline-block;
-	width: 100%;
-
-	$left: 5px;
-
-	&__inner {
-		-webkit-appearance: none;
-		background-color: $color-white;
-		background-image: none;
-		border-radius: 4px;
-		border: 1px solid $border-color-base;
-		box-sizing: border-box;
-		display: inline-block;
-		font-size: inherit;
-		height: $height;
-		line-height: $height;
-		outline: none;
-		padding: $paddingTop $paddingRight $paddingBottom $paddingLeft;
-		transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-		width: 100%;
-
-		&::-webkit-input-placeholder {
-			color: rgba($infoColor, 0.5);
+	@each $size in mini, medium, large {
+		&.#{$size} {
+			@include size($size);
 		}
+	}
 
-		&::-moz-placeholder {
-			color: rgba($infoColor, 0.5);
-		}
+	&.round {
+		border-radius: 20px;
+	}
 
-		&:-ms-input-placeholder {
-			color: rgba($infoColor, 0.5);
-		}
+	@if $type == base {
+		background-color: $c-white;
+		border-color: $bc-base;
 
 		&:focus {
 			outline: none;
-			border-color: $primaryColor;
 		}
-	}
+		&:hover {
+			color: $c-primary;
+			background-color: $c-blue-1;
+			border-color: $c-blue-2;
+		}
+		&:active {
+			border-color: $c-blue-3;
+		}
+		&:disabled,
+		&.loading {
+			cursor: not-allowed;
+			color: $c-gray-5;
+			background-color: $c-white;
+			border-color: $bc-light;
+		}
 
-	&.is-disabled &__inner {
-		background-color: $background-color-base;
-		border-color: $border-color-light;
-		color: $color-text-placeholder;
-		cursor: not-allowed;
-	}
+		&.block {
+			width: 100%;
+		}
+		&.circle {
+			border-radius: 50%;
+			@include size($circle: true);
 
-	&__suffix,
-	&__prefix {
-		position: absolute;
-		text-align: center;
-		color: rgba($infoColor, 0.5);
-		transition: all 0.3s;
-		pointer-events: none;
-
-		&-inner {
-			font-size: 16px;
-			pointer-events: all;
-			line-height: 2.5;
-			user-select: none;
-
-			&:hover {
-				cursor: pointer;
+			@each $size in mini, medium, large {
+				&.#{$size} {
+					@include size($size, true);
+				}
 			}
 		}
-	}
+		&.plain:hover {
+			color: $c-blue-5;
+			background-color: $c-white;
+			border-color: $c-blue-5;
+		}
+		&.plain:active {
+			color: $c-primary;
+			background-color: $c-white;
+			border-color: $c-primary;
+		}
+	} @else if $type == text {
+		color: $c-primary;
+		background-color: transparent;
+		border-color: transparent;
 
-	&__suffix {
-		@if $type == input {
-			height: 100%;
-			right: 5px;
-			top: 0;
+		&:disabled,
+		&:disabled:hover {
+			color: $c-gray-4;
+		}
+	} @else {
+		background-color: $color;
+		border-color: $color;
+
+		&:hover {
+			background-color: $hover-bg;
+			border-color: transparent;
+		}
+		&:active {
+			background-color: $color;
+		}
+		&:disabled,
+		&:disabled:hover {
+			background-color: $disabled-hover-bg;
 		}
 
-		@if $type == textarea {
-			right: 15px;
-			bottom: -5px;
+		&.plain {
+			color: $color;
+			background-color: $plain-bg;
+			border-color: $plain-bc;
+		}
+		&.plain:hover {
+			color: $c-white;
+			background-color: $color;
+		}
+		&.plain:active {
+			background-color: $plain-active-bg;
 		}
 	}
-
-	&__prefix {
-		height: 100%;
-		left: $left;
-		top: 0;
-	}
-
-	&--prefix &__inner {
-		padding-left: $paddingRight + $left * 2;
-	}
-}
-
-@mixin input-size($height) {
-	height: $height;
-	line-height: $height;
 }
