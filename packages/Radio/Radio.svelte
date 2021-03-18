@@ -10,8 +10,15 @@
 	export let border = false
 	export let size: string
 	export let name: string
+	let checked = false
+	let radio
 
-	$: checked = value === label
+	$: {
+		checked = value === label
+		if (radio) {
+			radio.checked = checked
+		}
+	}
 	$: classAttr = trimConcat(
 		'es-radio',
 		className,
@@ -19,10 +26,10 @@
 	)
 
 	const dispatch = createEventDispatcher()
-	const onClick = () => {
+	const onChange = () => {
 		if (!disabled) {
 			value = label
-			dispatch('click', label)
+			dispatch('change', label)
 		}
 	}
 </script>
@@ -35,14 +42,16 @@
 	aria-disabled="{disabled}"
 	aria-checked="{checked}"
 	role="radio"
-	on:click="{onClick}"
 >
 	<input
+		bind:this="{radio}"
 		class="es-radio__input"
 		type="radio"
 		name="{name}"
+		disabled="{disabled}"
 		hidden
 		aria-hidden="hidden"
+		on:change="{onChange}"
 	/>
 	<div class="es-radio__container">
 		<span class="es-radio__label" class:checked>
