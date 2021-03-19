@@ -4,21 +4,17 @@
 
 	let className = ''
 	export { className as class }
-	export let value: string | number | boolean
-	export let label: string | number | boolean
+	export let group: string | number
+	export let value: string | number
+	export let label: string | number
 	export let disabled = false
 	export let border = false
 	export let size: string
 	export let name: string
-	let checked = false
 	let radio
 
-	$: {
-		checked = value === label
-		if (radio) {
-			radio.checked = checked
-		}
-	}
+	$: checked = group === value
+	$: radio && (radio.checked = checked)
 	$: classAttr = trimConcat(
 		'es-radio',
 		className,
@@ -26,12 +22,7 @@
 	)
 
 	const dispatch = createEventDispatcher()
-	const onChange = () => {
-		if (!disabled) {
-			value = label
-			dispatch('change', label)
-		}
-	}
+	const onChange = () => !disabled && dispatch('change', value)
 </script>
 
 <label
@@ -48,6 +39,8 @@
 		class="es-radio__input"
 		type="radio"
 		name="{name}"
+		bind:group
+		value="{value}"
 		disabled="{disabled}"
 		hidden
 		aria-hidden="hidden"
