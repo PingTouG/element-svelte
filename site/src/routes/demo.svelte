@@ -13,66 +13,24 @@
 	<br />
 	<div>
 		<RadioButton
-			bind:value="{radio}"
-			label="1"
-			size="mini"
-			disabled
-			on:click="{onClick}"
-		>
-			选项1
-		</RadioButton>
-		<RadioButton
-			bind:value="{radio}"
-			label="2"
-			size="mini"
-			disabled
-			on:click="{onClick}"
-		>
-			选项2
-		</RadioButton>
-		<RadioButton
-			bind:value="{radio}"
-			label="3"
-			size="mini"
-			disabled
-			on:click="{onClick}"
-		>
-			选项3
-		</RadioButton>
-	</div>
-	<br />
-	<div>
-		<RadioButton bind:value="{radio}" label="1" on:click="{onClick}">
-			选项1
-		</RadioButton>
-		<RadioButton bind:value="{radio}" label="2" on:click="{onClick}">
-			选项2
-		</RadioButton>
-		<RadioButton bind:value="{radio}" label="3" on:click="{onClick}">
-			选项3
-		</RadioButton>
-	</div>
-	<br />
-	<div>
-		<RadioButton
-			bind:value="{radio}"
-			label="1"
+			bind:group="{radio}"
+			value="1"
 			size="medium"
 			on:click="{onClick}"
 		>
 			选项1
 		</RadioButton>
 		<RadioButton
-			bind:value="{radio}"
-			label="2"
+			bind:group="{radio}"
+			value="2"
 			size="medium"
 			on:click="{onClick}"
 		>
 			选项2
 		</RadioButton>
 		<RadioButton
-			bind:value="{radio}"
-			label="3"
+			bind:group="{radio}"
+			value="3"
 			size="medium"
 			on:click="{onClick}"
 		>
@@ -82,24 +40,24 @@
 	<br />
 	<div>
 		<RadioButton
-			bind:value="{radio}"
-			label="1"
+			bind:group="{radio}"
+			value="1"
 			size="large"
 			on:click="{onClick}"
 		>
 			选项1
 		</RadioButton>
 		<RadioButton
-			bind:value="{radio}"
-			label="2"
+			bind:group="{radio}"
+			value="2"
 			size="large"
 			on:click="{onClick}"
 		>
 			选项2
 		</RadioButton>
 		<RadioButton
-			bind:value="{radio}"
-			label="3"
+			bind:group="{radio}"
+			value="3"
 			size="large"
 			on:click="{onClick}"
 		>
@@ -112,49 +70,49 @@
 	<h3>单选</h3>
 	<br />
 	<div>
-		<Radio bind:value="{radio}" label="1" on:click="{onClick}">选项1</Radio>
-		<Radio bind:value="{radio}" label="2" on:click="{onClick}">选项2</Radio>
+		<Radio bind:group="{radio}" value="1" on:click="{onClick}">选项1</Radio>
+		<Radio bind:group="{radio}" value="2" on:click="{onClick}">选项2</Radio>
 	</div>
 	<br />
 	<div>
-		<Radio bind:value="{radio}" label="1" disabled>选项1</Radio>
-		<Radio bind:value="{radio}" label="2" disabled>选项2</Radio>
+		<Radio bind:group="{radio}" value="1" disabled>选项1</Radio>
+		<Radio bind:group="{radio}" value="2" disabled>选项2</Radio>
 	</div>
 	<br />
 	<div>
-		<Radio bind:value="{radio}" label="1" border on:click="{onClick}">
+		<Radio bind:group="{radio}" value="1" border on:click="{onClick}">
 			选项1
 		</Radio>
-		<Radio bind:value="{radio}" label="2" border on:click="{onClick}">
+		<Radio bind:group="{radio}" value="2" border on:click="{onClick}">
 			选项2
 		</Radio>
 	</div>
 	<br />
 	<div>
-		<Radio bind:value="{radio}" label="1" border disabled on:click="{onClick}">
+		<Radio bind:group="{radio}" value="1" border disabled on:click="{onClick}">
 			选项1
 		</Radio>
-		<Radio bind:value="{radio}" label="2" border disabled on:click="{onClick}">
+		<Radio bind:group="{radio}" value="2" border disabled on:click="{onClick}">
 			选项2
 		</Radio>
 	</div>
 	<br />
 	<div>
 		<Radio
-			bind:value="{radio}"
-			label="1"
+			bind:group="{radio}"
+			value="1"
 			border
 			size="mini"
 			on:click="{onClick}"
 		>
 			选项1
 		</Radio>
-		<Radio bind:value="{radio}" label="2" border on:click="{onClick}">
+		<Radio bind:group="{radio}" value="2" border on:click="{onClick}">
 			选项2
 		</Radio>
 		<Radio
-			bind:value="{radio}"
-			label="3"
+			bind:group="{radio}"
+			value="3"
 			border
 			size="medium"
 			on:click="{onClick}"
@@ -162,8 +120,8 @@
 			选项3
 		</Radio>
 		<Radio
-			bind:value="{radio}"
-			label="4"
+			bind:group="{radio}"
+			value="4"
 			border
 			size="large"
 			on:click="{onClick}"
