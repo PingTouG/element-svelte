@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { trimConcat, preffixConcat } from '../utils/tools'
-	import { createEventDispatcher } from 'svelte'
+	import { createEventDispatcher, getContext } from 'svelte'
+	import { GROUP_VALUE, GROUP_DISABLED, GROUP_SIZE } from './context'
+	import type { Writable } from 'svelte/store'
 
 	let className = ''
 	export { className as class }
@@ -12,8 +14,13 @@
 	export let size: string
 	export let name: string
 	let radio
+	let groupValue: Writable<string | number> = getContext(GROUP_VALUE)
+	let groupDisabled: Writable<boolean> = getContext(GROUP_DISABLED)
+	let groupSize: Writable<string> = getContext(GROUP_SIZE)
 
-	$: checked = group === value
+	$: disabled = $groupDisabled
+	$: size = $groupSize
+	$: checked = ($groupValue && $groupValue === value) || group === value
 	$: radio && (radio.checked = checked)
 	$: classAttr = trimConcat(
 		'es-radio',
@@ -25,6 +32,7 @@
 	const onChange = () => !disabled && dispatch('change', value)
 </script>
 
+<!-- svelte-ignore a11y-label-has-associated-control -->
 <label
 	class="{classAttr}"
 	class:disabled
@@ -34,18 +42,33 @@
 	aria-checked="{checked}"
 	role="radio"
 >
-	<input
-		bind:this="{radio}"
-		class="es-radio__input"
-		type="radio"
-		name="{name}"
-		bind:group
-		value="{value}"
-		disabled="{disabled}"
-		hidden
-		aria-hidden="hidden"
-		on:change="{onChange}"
-	/>
+	{#if $groupValue}
+		<input
+			bind:this="{radio}"
+			class="es-radio__input"
+			type="radio"
+			name="{name}"
+			bind:group="{$groupValue}"
+			value="{value}"
+			disabled="{disabled}"
+			hidden
+			aria-hidden="hidden"
+			on:change="{onChange}"
+		/>
+	{:else}
+		<input
+			bind:this="{radio}"
+			class="es-radio__input"
+			type="radio"
+			name="{name}"
+			bind:group
+			value="{value}"
+			disabled="{disabled}"
+			hidden
+			aria-hidden="hidden"
+			on:change="{onChange}"
+		/>
+	{/if}
 	<div class="es-radio__container">
 		<span class="es-radio__label" class:checked>
 			<slot />

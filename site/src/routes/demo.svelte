@@ -1,132 +1,23 @@
 <script lang="ts">
-	import { Radio, RadioButton } from '../../../packages/main'
+	import { RadioButton, Button, RadioGroup } from '../../../packages/main'
 
 	let radio = '1'
+	let size = 'mini'
 
-	function onClick() {
-		console.log(radio)
+	function onChange(e) {
+		console.log('demo:', e.detail)
 	}
 </script>
 
 <div>
-	<h3>单选按钮样式</h3>
-	<br />
-	<div>
-		<RadioButton
-			bind:group="{radio}"
-			value="1"
-			size="medium"
-			on:click="{onClick}"
-		>
-			选项1
-		</RadioButton>
-		<RadioButton
-			bind:group="{radio}"
-			value="2"
-			size="medium"
-			on:click="{onClick}"
-		>
-			选项2
-		</RadioButton>
-		<RadioButton
-			bind:group="{radio}"
-			value="3"
-			size="medium"
-			on:click="{onClick}"
-		>
-			选项3
-		</RadioButton>
-	</div>
-	<br />
-	<div>
-		<RadioButton
-			bind:group="{radio}"
-			value="1"
-			size="large"
-			on:click="{onClick}"
-		>
-			选项1
-		</RadioButton>
-		<RadioButton
-			bind:group="{radio}"
-			value="2"
-			size="large"
-			on:click="{onClick}"
-		>
-			选项2
-		</RadioButton>
-		<RadioButton
-			bind:group="{radio}"
-			value="3"
-			size="large"
-			on:click="{onClick}"
-		>
-			选项3
-		</RadioButton>
-	</div>
-</div>
-<br />
-<div>
+	{radio}
 	<h3>单选</h3>
 	<br />
 	<div>
-		<Radio bind:group="{radio}" value="1" on:click="{onClick}">选项1</Radio>
-		<Radio bind:group="{radio}" value="2" on:click="{onClick}">选项2</Radio>
+		<RadioGroup bind:value="{radio}" size="{size}" on:change="{onChange}">
+			<RadioButton value="1">选项1</RadioButton>
+			<RadioButton value="2">选项2</RadioButton>
+		</RadioGroup>
 	</div>
 	<br />
-	<div>
-		<Radio bind:group="{radio}" value="1" disabled>选项1</Radio>
-		<Radio bind:group="{radio}" value="2" disabled>选项2</Radio>
-	</div>
-	<br />
-	<div>
-		<Radio bind:group="{radio}" value="1" border on:click="{onClick}">
-			选项1
-		</Radio>
-		<Radio bind:group="{radio}" value="2" border on:click="{onClick}">
-			选项2
-		</Radio>
-	</div>
-	<br />
-	<div>
-		<Radio bind:group="{radio}" value="1" border disabled on:click="{onClick}">
-			选项1
-		</Radio>
-		<Radio bind:group="{radio}" value="2" border disabled on:click="{onClick}">
-			选项2
-		</Radio>
-	</div>
-	<br />
-	<div>
-		<Radio
-			bind:group="{radio}"
-			value="1"
-			border
-			size="mini"
-			on:click="{onClick}"
-		>
-			选项1
-		</Radio>
-		<Radio bind:group="{radio}" value="2" border on:click="{onClick}">
-			选项2
-		</Radio>
-		<Radio
-			bind:group="{radio}"
-			value="3"
-			border
-			size="medium"
-			on:click="{onClick}"
-		>
-			选项3
-		</Radio>
-		<Radio
-			bind:group="{radio}"
-			value="4"
-			border
-			size="large"
-			on:click="{onClick}"
-		>
-			选项4
-		</Radio>
-	</div>
 </div>
