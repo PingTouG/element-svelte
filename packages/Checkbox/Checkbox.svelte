@@ -1,9 +1,9 @@
 <script lang="ts">
-	let className = ''
 	import { trimConcat, preffixConcat } from '../utils/tools'
 	import { createEventDispatcher, getContext } from 'svelte'
 	import type { Writable } from 'svelte/store'
 
+	let className = ''
 	export { className as class }
 	export let group: Array<string | number> | string | number
 	export let value: string | number
