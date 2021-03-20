@@ -16,7 +16,7 @@
 	$: groupGroup.set(group)
 	$: group = $groupGroup
 	setContext('ES:radio-group:group', groupGroup)
-	groupGroup.subscribe((val) => dispatch('change', val))
+	setContext('ES:radio-group:change', (val) => dispatch('change', val))
 
 	const groupDisabled = writable(disabled)
 	$: groupDisabled.set(disabled)

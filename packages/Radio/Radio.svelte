@@ -20,11 +20,18 @@
 	)
 
 	let groupGroup: Writable<string | number> = getContext('ES:radio-group:group')
+	const dispathcGroupChange: Function = getContext('ES:radio-group:change')
+
 	$: checked = ($groupGroup && $groupGroup === value) || group === value
 	let radio
 	$: radio && (radio.checked = checked)
 	const dispatch = createEventDispatcher()
-	const onChange = () => !disabled && dispatch('change', value)
+	const onChange = () => {
+		if (!disabled) {
+			dispathcGroupChange && dispathcGroupChange(value)
+			dispatch('change', value)
+		}
+	}
 
 	const groupDisabled: Writable<boolean> = getContext('ES:radio-group:disabled')
 	$: disabled = $groupDisabled
