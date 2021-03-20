@@ -2,7 +2,6 @@
 	import { setContext, createEventDispatcher } from 'svelte'
 	import { writable } from 'svelte/store'
 	import { trimConcat, preffixConcat } from '../utils/tools'
-	import { GROUP_VALUE, GROUP_DISABLED, GROUP_SIZE } from './context'
 	const dispatch = createEventDispatcher()
 
 	let className = ''
@@ -13,15 +12,15 @@
 
 	$: classAttr = trimConcat('es-radio-group', className, preffixConcat(size))
 
-	let groupValue = writable(value)
-	let groupDisabled = writable(disabled)
-	let groupSize = writable(size)
+	const groupValue = writable(value)
+	const groupDisabled = writable(disabled)
+	const groupSize = writable(size)
 	$: groupValue.set(value)
 	$: groupSize.set(size)
 	$: value = $groupValue
-	setContext(GROUP_VALUE, groupValue)
-	setContext(GROUP_DISABLED, groupDisabled)
-	setContext(GROUP_SIZE, groupSize)
+	setContext('ES:radio-group:value', groupValue)
+	setContext('ES:radio-group:disabled', groupDisabled)
+	setContext('ES:radio-group:size', groupSize)
 	groupValue.subscribe((val) => dispatch('change', val))
 </script>
 

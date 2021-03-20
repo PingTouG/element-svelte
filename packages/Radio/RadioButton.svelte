@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { trimConcat, preffixConcat } from '../utils/tools'
 	import { createEventDispatcher, getContext } from 'svelte'
-	import { GROUP_VALUE, GROUP_DISABLED, GROUP_SIZE } from './context'
 	import type { Writable } from 'svelte/store'
 	const dispatch = createEventDispatcher()
 
@@ -15,9 +14,9 @@
 	export let size: string
 	let radio
 
-	let groupValue: Writable<string | number> = getContext(GROUP_VALUE)
-	let groupDisabled: Writable<boolean> = getContext(GROUP_DISABLED)
-	let groupSize: Writable<string> = getContext(GROUP_SIZE)
+	let groupValue: Writable<string | number> = getContext('ES:radio-group:value')
+	const groupDisabled: Writable<boolean> = getContext('ES:radio-group:disabled')
+	const groupSize: Writable<string> = getContext('ES:radio-group:size')
 
 	$: disabled = $groupDisabled
 	$: size = $groupSize
