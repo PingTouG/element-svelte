@@ -1,7 +1,8 @@
 <script lang="ts">
 	let className = ''
 	import { trimConcat, preffixConcat } from '../utils/tools'
-	import { createEventDispatcher } from 'svelte'
+	import { createEventDispatcher, getContext } from 'svelte'
+	import type { Writable } from 'svelte/store'
 
 	export { className as class }
 	export let group: Array<string | number> | string | number
@@ -14,34 +15,67 @@
 	export let size: string
 	export let name: string
 	export let checked = false
-	let checkbox
 
-	$: checked = Array.isArray(group)
-		? group?.includes(value)
-		: group && group === trueValue
-
-	$: checkbox && (checkbox.checked = checked)
 	$: classAttr = trimConcat(
 		'es-checkbox',
 		className,
 		preffixConcat(border && size, '', size),
 	)
 
+	let groupGroup: Writable<
+		Array<string | number> | string | number
+	> = getContext('ES:checkbox-group:group')
+	const dispathcGroupChange: Function = getContext('ES:checkbox-group:change')
+	$: {
+		let groupValue = $groupGroup ? $groupGroup : group
+		checked = Array.isArray(groupValue)
+			? groupValue.includes(value)
+			: groupValue && groupValue === trueValue
+	}
+	let checkbox
+	$: checkbox && (checkbox.checked = checked)
 	const dispatch = createEventDispatcher()
 	const onChange = () => {
-		if (!disabled && group) {
+		let groupValue = $groupGroup ? $groupGroup : group
+
+		if (!disabled && groupValue) {
 			checked = !checked
-			group = checked
-				? Array.isArray(group)
-					? [...group, value]
+			groupValue = checked
+				? Array.isArray(groupValue)
+					? [...groupValue, value]
 					: trueValue
-				: Array.isArray(group)
-				? group.filter((item) => item !== value)
+				: Array.isArray(groupValue)
+				? groupValue.filter((item) => item !== value)
 				: falseValue
 
-			dispatch('change', group ? group : checked)
+			$groupGroup ? ($groupGroup = groupValue) : (group = groupValue)
+
+			const changeValue = groupValue ? groupValue : checked
+			dispathcGroupChange && dispathcGroupChange(changeValue)
+			dispatch('change', changeValue)
 		}
 	}
+
+	let isLimitDisabled = false
+	let groupMin: Writable<number> = getContext('ES:checkbox-group:min')
+	let groupMax: Writable<number> = getContext('ES:checkbox-group:max')
+
+	$: {
+		const groupValue = $groupGroup ? $groupGroup : group
+		Array.isArray(groupValue) &&
+			!!($groupMin || $groupMax) &&
+			(isLimitDisabled =
+				(groupValue.length >= $groupMax && !checked) ||
+				(groupValue.length <= $groupMin && checked))
+	}
+
+	let groupDisabled: Writable<boolean> = getContext(
+		'ES:checkbox-group:disabled',
+	)
+	$: disabled = $groupDisabled || isLimitDisabled
+
+	const groupSize: Writable<string> = getContext('ES:checkbox-group:size')
+	$: size = $groupSize
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->
