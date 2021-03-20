@@ -12,23 +12,25 @@
 	export let border = false
 	export let size: string
 	export let name: string
-	let radio
-	let groupGroup: Writable<string | number> = getContext('ES:radio-group:group')
-	const groupDisabled: Writable<boolean> = getContext('ES:radio-group:disabled')
-	const groupSize: Writable<string> = getContext('ES:radio-group:size')
 
-	$: disabled = $groupDisabled
-	$: size = $groupSize
-	$: checked = ($groupGroup && $groupGroup === value) || group === value
-	$: radio && (radio.checked = checked)
 	$: classAttr = trimConcat(
 		'es-radio',
 		className,
 		preffixConcat(border && size, '', size),
 	)
 
+	let groupGroup: Writable<string | number> = getContext('ES:radio-group:group')
+	$: checked = ($groupGroup && $groupGroup === value) || group === value
+	let radio
+	$: radio && (radio.checked = checked)
 	const dispatch = createEventDispatcher()
 	const onChange = () => !disabled && dispatch('change', value)
+
+	const groupDisabled: Writable<boolean> = getContext('ES:radio-group:disabled')
+	$: disabled = $groupDisabled
+
+	const groupSize: Writable<string> = getContext('ES:radio-group:size')
+	$: size = $groupSize
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->

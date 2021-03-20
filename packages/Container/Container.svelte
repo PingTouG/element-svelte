@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { preffixConcat, trimConcat } from '../utils/tools'
+
 	let className = ''
 	export { className as class }
-
 	export let direction: string
 
 	let container

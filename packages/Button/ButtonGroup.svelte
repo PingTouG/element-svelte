@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { trimConcat } from '../utils/tools'
+
 	let className = ''
 	export { className as class }
 

@@ -3,7 +3,6 @@
 
 	let className = ''
 	export { className as class }
-
 	export let height = '60px'
 
 	$: style = `height: ${height}`

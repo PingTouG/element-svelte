@@ -13,16 +13,18 @@
 	$: classAttr = trimConcat('es-radio-group', className, preffixConcat(size))
 
 	const groupGroup = writable(group)
-	const groupDisabled = writable(disabled)
-	const groupSize = writable(size)
 	$: groupGroup.set(group)
-	$: groupSize.set(size)
-	$: groupDisabled.set(disabled)
 	$: group = $groupGroup
 	setContext('ES:radio-group:group', groupGroup)
-	setContext('ES:radio-group:disabled', groupDisabled)
-	setContext('ES:radio-group:size', groupSize)
 	groupGroup.subscribe((val) => dispatch('change', val))
+
+	const groupDisabled = writable(disabled)
+	$: groupDisabled.set(disabled)
+	setContext('ES:radio-group:disabled', groupDisabled)
+
+	const groupSize = writable(size)
+	$: groupSize.set(size)
+	setContext('ES:radio-group:size', groupSize)
 </script>
 
 <div class="{classAttr}" class:disabled role="radiogroup">

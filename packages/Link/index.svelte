@@ -23,9 +23,7 @@
 
 	const dispatch = createEventDispatcher()
 	function onClick() {
-		if (!disabled || !href) {
-			dispatch('click')
-		}
+		;(!disabled || !href) && dispatch('click')
 	}
 </script>
 
