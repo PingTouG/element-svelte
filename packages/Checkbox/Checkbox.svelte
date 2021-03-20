@@ -18,7 +18,7 @@
 
 	$: checked = Array.isArray(group)
 		? group?.includes(value)
-		: group === trueValue
+		: group && group === trueValue
 
 	$: checkbox && (checkbox.checked = checked)
 	$: classAttr = trimConcat(
@@ -29,7 +29,7 @@
 
 	const dispatch = createEventDispatcher()
 	const onChange = () => {
-		if (!disabled) {
+		if (!disabled && group) {
 			checked = !checked
 			group = checked
 				? Array.isArray(group)
