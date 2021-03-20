@@ -6,24 +6,24 @@
 
 	let className = ''
 	export { className as class }
-	export let value: string | number
+	export let group: string | number
 	export let size: string
 	export let disabled = false
 
 	$: classAttr = trimConcat('es-radio-group', className, preffixConcat(size))
 
-	const groupValue = writable(value)
+	const groupGroup = writable(group)
 	const groupDisabled = writable(disabled)
 	const groupSize = writable(size)
-	$: groupValue.set(value)
+	$: groupGroup.set(group)
 	$: groupSize.set(size)
-	$: value = $groupValue
-	setContext('ES:radio-group:value', groupValue)
+	$: group = $groupGroup
+	setContext('ES:radio-group:group', groupGroup)
 	setContext('ES:radio-group:disabled', groupDisabled)
 	setContext('ES:radio-group:size', groupSize)
-	groupValue.subscribe((val) => dispatch('change', val))
+	groupGroup.subscribe((val) => dispatch('change', val))
 </script>
 
 <div class="{classAttr}" class:disabled role="radiogroup">
-	<slot group="{value}" />
+	<slot group="{group}" />
 </div>

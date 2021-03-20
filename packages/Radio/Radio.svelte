@@ -13,13 +13,13 @@
 	export let size: string
 	export let name: string
 	let radio
-	let groupValue: Writable<string | number> = getContext('ES:radio-group:value')
+	let groupGroup: Writable<string | number> = getContext('ES:radio-group:group')
 	const groupDisabled: Writable<boolean> = getContext('ES:radio-group:disabled')
 	const groupSize: Writable<string> = getContext('ES:radio-group:size')
 
 	$: disabled = $groupDisabled
 	$: size = $groupSize
-	$: checked = ($groupValue && $groupValue === value) || group === value
+	$: checked = ($groupGroup && $groupGroup === value) || group === value
 	$: radio && (radio.checked = checked)
 	$: classAttr = trimConcat(
 		'es-radio',
@@ -41,13 +41,13 @@
 	aria-checked="{checked}"
 	role="radio"
 >
-	{#if $groupValue}
+	{#if $groupGroup}
 		<input
 			bind:this="{radio}"
 			class="es-radio__input"
 			type="radio"
 			name="{name}"
-			bind:group="{$groupValue}"
+			bind:group="{$groupGroup}"
 			value="{value}"
 			disabled="{disabled}"
 			hidden
