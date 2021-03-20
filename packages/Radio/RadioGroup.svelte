@@ -17,6 +17,7 @@
 	const groupSize = writable(size)
 	$: groupGroup.set(group)
 	$: groupSize.set(size)
+	$: groupDisabled.set(disabled)
 	$: group = $groupGroup
 	setContext('ES:radio-group:group', groupGroup)
 	setContext('ES:radio-group:disabled', groupDisabled)
