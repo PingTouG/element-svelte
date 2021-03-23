@@ -5,10 +5,12 @@
 	export { className as class }
 	export let color: string
 	export let name: string
-	export let size = '16px'
+	export let size = '14px'
 
 	$: style = `font-size: ${size};${preffixConcat(color, 'color: ')}`
-	$: classAttr = trimConcat('iconfont', className, preffixConcat(name, 'icon-'))
+	$: classAttr = trimConcat(className, preffixConcat(name, 'es-icon-'))
 </script>
 
 <i class="{classAttr}" style="{style}"></i>
+
+<style lang="scss" src="./_icon.scss" global></style>
