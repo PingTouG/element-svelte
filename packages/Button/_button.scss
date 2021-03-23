@@ -72,24 +72,6 @@
 			);
 		}
 	}
-
-	&.loading .loading-icon {
-		animation: rotating 2s linear infinite;
-
-		&::before {
-			content: '';
-			display: inline-block;
-			width: 1em;
-			height: 1em;
-			margin-right: 0.5em;
-			color: $c-white;
-			border: 1px solid $bc-base;
-			border-radius: 50%;
-			vertical-align: -10%;
-			clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
-			animation: rotating 1s linear infinite;
-		}
-	}
 }
 
 @keyframes rotating {

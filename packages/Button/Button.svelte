@@ -35,7 +35,7 @@
 	on:click
 >
 	{#if loading}
-		<span class="loading-icon"></span>
+		<Icon name="loading" />
 	{/if}
 	{#if icon}
 		<Icon name="{icon}" />
