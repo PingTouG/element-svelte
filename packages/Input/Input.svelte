@@ -3,11 +3,7 @@
 	import { trimConcat, preffixConcat, isKorean, throttle } from '../utils/tools'
 	import Icon from '../Icon/index.svelte'
 	import calcTextareaHeight from './calcTextareaHeight'
-
-	type AutoSize = {
-		minRows: number
-		maxRows: number
-	}
+	import type { AutoSize } from './type'
 
 	let className = ''
 	export { className as class }
