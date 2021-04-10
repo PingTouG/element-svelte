@@ -11,6 +11,6 @@
 	$: classAttr = trimConcat(className, preffixConcat(name, 'es-icon-'))
 </script>
 
-<i class="{classAttr}" style="{style}"></i>
+<i class="{classAttr}" style="{style}" on:click></i>
 
 <style lang="scss" src="./_icon.scss" global></style>
