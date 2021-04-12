@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { preffixConcat, trimConcat } from '../utils/tools'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
 	export let color: string
 	export let name: string
-	export let size = '14px'
+	export let size: string = '14px'
 
 	$: style = `font-size: ${size};${preffixConcat(color, 'color: ')}`
 	$: classAttr = trimConcat(className, preffixConcat(name, 'es-icon-'))

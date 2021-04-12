@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { trimConcat } from '../utils/tools'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
-	export let height = '60px'
+	export let height: string = '60px'
 
 	$: style = `height: ${height}`
 	$: classAttr = trimConcat('es-header', className)

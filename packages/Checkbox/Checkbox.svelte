@@ -3,18 +3,18 @@
 	import { createEventDispatcher, getContext } from 'svelte'
 	import type { Writable } from 'svelte/store'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
 	export let group: Array<string | number> | string | number
 	export let value: string | number
 	export let label: string | number
 	export let trueValue: string | number
 	export let falseValue: string | number
-	export let disabled = false
-	export let border = false
+	export let disabled: boolean = false
+	export let border: boolean = false
 	export let size: string
 	export let name: string
-	export let checked = false
+	export let checked: boolean = false
 
 	$: classAttr = trimConcat(
 		'es-checkbox',
@@ -32,11 +32,13 @@
 			? groupValue.includes(value)
 			: groupValue && groupValue === trueValue
 	}
-	let checkbox
+	let checkbox: HTMLFormElement
 	$: checkbox && (checkbox.checked = checked)
 	const dispatch = createEventDispatcher()
 	const onChange = () => {
-		let groupValue = $groupGroup ? $groupGroup : group
+		let groupValue: Array<string | number> | string | number = $groupGroup
+			? $groupGroup
+			: group
 
 		if (!disabled && groupValue) {
 			checked = !checked
@@ -50,18 +52,24 @@
 
 			$groupGroup ? ($groupGroup = groupValue) : (group = groupValue)
 
-			const changeValue = groupValue ? groupValue : checked
+			const changeValue:
+				| Array<string | number>
+				| string
+				| number
+				| boolean = groupValue ? groupValue : checked
 			dispathcGroupChange && dispathcGroupChange(changeValue)
 			dispatch('change', changeValue)
 		}
 	}
 
-	let isLimitDisabled = false
+	let isLimitDisabled: boolean = false
 	let groupMin: Writable<number> = getContext('ES:checkbox-group:min')
 	let groupMax: Writable<number> = getContext('ES:checkbox-group:max')
 
 	$: {
-		const groupValue = $groupGroup ? $groupGroup : group
+		const groupValue: Array<string | number> | string | number = $groupGroup
+			? $groupGroup
+			: group
 		Array.isArray(groupValue) &&
 			!!($groupMin || $groupMax) &&
 			(isLimitDisabled =

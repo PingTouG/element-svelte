@@ -2,10 +2,13 @@
 	import { getContext } from 'svelte'
 	import { GUTTER } from './store'
 	import { preffixConcat, trimConcat } from '../utils/tools'
-	export let span = 24
-	export let offset = 0
-	export let push = 0
-	export let pull = 0
+
+	let className: string = ''
+	export { className as class }
+	export let span: number = 24
+	export let offset: number = 0
+	export let push: number = 0
+	export let pull: number = 0
 
 	const gutter: number = getContext(GUTTER)
 
@@ -15,6 +18,7 @@
 
 	$: classAttr = trimConcat(
 		'es-col',
+		className,
 		preffixConcat(span !== 24, 'es-col-span-', span),
 		preffixConcat(offset, 'es-col-offset-'),
 		preffixConcat(push, 'es-col-push-'),

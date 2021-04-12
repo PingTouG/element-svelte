@@ -3,13 +3,13 @@
 	import { createEventDispatcher, getContext } from 'svelte'
 	import type { Writable } from 'svelte/store'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
 	export let group: string | number
 	export let value: string | number
 	export let label: string | number
-	export let disabled = false
-	export let border = false
+	export let disabled: boolean = false
+	export let border: boolean = false
 	export let size: string
 	export let name: string
 
@@ -23,7 +23,7 @@
 	const dispathcGroupChange: Function = getContext('ES:radio-group:change')
 
 	$: checked = ($groupGroup && $groupGroup === value) || group === value
-	let radio
+	let radio: HTMLFormElement
 	$: radio && (radio.checked = checked)
 	const dispatch = createEventDispatcher()
 	const onChange = () => {

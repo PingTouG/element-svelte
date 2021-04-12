@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { trimConcat } from '../utils/tools'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
-	export let width = '300px'
+	export let width: string = '300px'
 
 	$: style = `width: ${width}`
 	$: classAttr = trimConcat('es-aside', className)

@@ -5,36 +5,36 @@
 	import calcTextareaHeight from './calcTextareaHeight'
 	import type { AutoSize } from './type'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
-	export let type = 'text'
+	export let type: string = 'text'
 	export let value: string | number = ''
 	export let maxlength: number
 	export let minlength: number
-	export let showWordLimit = false
+	export let showWordLimit: boolean = false
 	export let placeholder: string
-	export let clearable = false
-	export let showPassword = false
-	export let disabled = false
+	export let clearable: boolean = false
+	export let showPassword: boolean = false
+	export let disabled: boolean = false
 	export let size: string
 	export let prefixIcon: string
 	export let suffixIcon: string
-	export let rows = 2
+	export let rows: number = 2
 	export let autosize: boolean | AutoSize = false
-	export let autocomplete = 'off'
+	export let autocomplete: string = 'off'
 	export let name: string
-	export let readonly = false
+	export let readonly: boolean = false
 	export let max: any
 	export let min: any
 	export let step: any
 	export let resize: string
-	export let autofocus = false
+	export let autofocus: boolean = false
 	export let form: string
 	export let label: string
 	export let tabindex: number
 
-	let el
-	let passwordVisible = false
+	let el: HTMLElement
+	let passwordVisible: boolean = false
 
 	$: classAttr = trimConcat(
 		`es-${type === 'textarea' ? 'textarea' : 'input'}`,
@@ -69,8 +69,8 @@
 		unNoAllowed &&
 		!showPassword
 
-	let limitEl = null
-	let inputInnerPadding = null
+	let limitEl: HTMLElement = null
+	let inputInnerPadding: string = null
 	$: {
 		if (limitEl) {
 			// 需要依赖value变化，所以需要加入value
@@ -98,7 +98,7 @@
 
 	$: valueLen = String(value).length
 
-	let textareaStyle = null
+	let textareaStyle: string = null
 	const resetTextareaCalcStyle = () => {
 		if (type !== 'textarea' || !el) return
 		if (!(<boolean>autosize)) {
@@ -115,7 +115,7 @@
 			.join(';')
 	}
 
-	let autoScrollTop
+	let autoScrollTop: Function
 
 	onMount(() => {
 		resetTextareaCalcStyle()
@@ -124,8 +124,8 @@
 
 	const dispatch = createEventDispatcher()
 
-	let hovering = false
-	let focused = false
+	let hovering: boolean = false
+	let focused: boolean = false
 	const onFocus = () => {
 		focused = true
 		dispatch('focus')
@@ -134,11 +134,11 @@
 		focused = false
 		dispatch('blur')
 	}
-	let isComposing = false
+	let isComposing: boolean = false
 	const onCompositionStart = () => (isComposing = true)
 	const onCompositionUpdate = (e) => {
-		const text = e.target.value
-		const lastCharacter = text[text.length - 1] || ''
+		const text: string = e.target.value
+		const lastCharacter: string = text[text.length - 1] || ''
 		isComposing = !isKorean(lastCharacter)
 	}
 	const onCompositionEnd = (e) => {

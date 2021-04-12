@@ -3,15 +3,15 @@
 	import { createEventDispatcher } from 'svelte'
 	import Icon from '../Icon/index.svelte'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
 
-	export let disabled = false
+	export let disabled: boolean = false
 	export let href: string
 	export let icon: string
 	export let type: string
-	export let underline = true
-	export let target = '_self'
+	export let underline: boolean = true
+	export let target: string = '_self'
 
 	$: classAttr = trimConcat(
 		'es-link',

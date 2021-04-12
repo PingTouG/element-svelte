@@ -3,12 +3,12 @@
 	import { createEventDispatcher, getContext } from 'svelte'
 	import type { Writable } from 'svelte/store'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
 	export let group: Array<string | number> | string | number
 	export let value: string | number
 	export let label: string | number
-	export let disabled = false
+	export let disabled: boolean = false
 	export let name: string
 	export let size: string
 
@@ -22,32 +22,23 @@
 		Array<string | number> | string | number
 	> = getContext('ES:checkbox-group:group')
 	const dispathcGroupChange: Function = getContext('ES:checkbox-group:change')
-	let checked = false
+	let checked: boolean = false
 	$: {
-		let groupValue = $groupGroup ? $groupGroup : group
+		let groupValue: Array<string | number> | string | number = $groupGroup
+			? $groupGroup
+			: group
 		checked = Array.isArray(groupValue)
 			? groupValue.includes(value)
 			: groupValue && groupValue === value
 	}
-	let checkbox
+	let checkbox: HTMLFormElement
 	$: checkbox && (checkbox.checked = checked)
 	const dispatch = createEventDispatcher()
-	// const onChange = () => {
-	// 	if (!disabled) {
-	// 		group = !checked
-	// 			? Array.isArray(group)
-	// 				? [...group, value]
-	// 				: value
-	// 			: Array.isArray(group)
-	// 			? group.filter((item) => item !== value)
-	// 			: value
-
-	// 		dispatch('change', group)
-	// 	}
-	// }
 
 	const onChange = () => {
-		let groupValue = $groupGroup ? $groupGroup : group
+		let groupValue: Array<string | number> | string | number = $groupGroup
+			? $groupGroup
+			: group
 
 		if (!disabled && groupValue) {
 			checked = !checked
@@ -61,18 +52,24 @@
 
 			$groupGroup ? ($groupGroup = groupValue) : (group = groupValue)
 
-			const changeValue = groupValue ? groupValue : checked
+			const changeValue:
+				| Array<string | number>
+				| string
+				| number
+				| boolean = groupValue ? groupValue : checked
 			dispathcGroupChange && dispathcGroupChange(changeValue)
 			dispatch('change', changeValue)
 		}
 	}
 
-	let isLimitDisabled = false
+	let isLimitDisabled: boolean = false
 	let groupMin: Writable<number> = getContext('ES:checkbox-group:min')
 	let groupMax: Writable<number> = getContext('ES:checkbox-group:max')
 
 	$: {
-		const groupValue = $groupGroup ? $groupGroup : group
+		const groupValue: Array<string | number> | string | number = $groupGroup
+			? $groupGroup
+			: group
 		Array.isArray(groupValue) &&
 			!!($groupMin || $groupMax) &&
 			(isLimitDisabled =

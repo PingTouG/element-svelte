@@ -3,12 +3,12 @@
 	import { GUTTER } from './store'
 	import { preffixConcat, trimConcat } from '../utils/tools'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
-	export let gutter = 0
+	export let gutter: number = 0
 	export let type: string
-	export let justify = 'start'
-	export let align = 'top'
+	export let justify: string = 'start'
+	export let align: string = 'top'
 
 	$: isFlex = type === 'flex'
 	$: classAttr = trimConcat(

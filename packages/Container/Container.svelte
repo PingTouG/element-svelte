@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte'
 	import { preffixConcat, trimConcat } from '../utils/tools'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
 	export let direction: string
 

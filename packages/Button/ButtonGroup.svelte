@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { trimConcat } from '../utils/tools'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
 
 	$: classAttr = trimConcat('es-button-group', className)

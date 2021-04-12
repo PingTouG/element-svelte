@@ -2,14 +2,14 @@
 	import Icon from '../Icon/index.svelte'
 	import { preffixConcat, trimConcat } from '../utils/tools'
 
-	let className = ''
+	let className: string = ''
 	export { className as class }
 	export let block: boolean
 	export let circle: boolean
 	export let disabled: boolean
 	export let icon: string
 	export let loading: boolean
-	export let nativeType = 'button'
+	export let nativeType: string = 'button'
 	export let plain: boolean
 	export let round: boolean
 	export let size: string
