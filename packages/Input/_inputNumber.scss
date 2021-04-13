@@ -1,0 +1,133 @@
+@import '../styles/vars';
+
+$width: 160px;
+
+.es-input-number {
+	position: relative;
+	display: inline-block;
+	width: $width;
+	line-height: $input-h-base - 2px;
+
+	& .es-input {
+		display: block;
+	}
+
+	& .es-input__inner {
+		padding-left: 50px;
+		padding-right: 50px;
+		text-align: center;
+	}
+
+	&.disabled &__decrease,
+	&.disabled &__increase {
+		background: $bg-base;
+		color: $tc-placeholder;
+		cursor: not-allowed;
+
+		&:hover {
+			color: $tc-placeholder;
+		}
+	}
+
+	&__decrease,
+	&__increase {
+		position: absolute;
+		z-index: 1;
+		top: 1px;
+		width: $input-h-base + 4px;
+		height: auto;
+		text-align: center;
+		background: $c-gray-3;
+		color: $tc-primary;
+		cursor: pointer;
+		font-size: 13px;
+
+		&.disabled {
+			background: $bg-base;
+			color: $tc-placeholder;
+			cursor: not-allowed;
+
+			&:hover {
+				color: $tc-placeholder;
+			}
+		}
+
+		&:hover {
+			color: $c-primary;
+		}
+	}
+
+	&__decrease {
+		left: 1px;
+		border-radius: $radius 0 0 $radius;
+		border-right: 1px solid $bc-base;
+	}
+
+	&__increase {
+		right: 1px;
+		border-radius: 0 $radius $radius 0;
+		border-left: 1px solid $bc-base;
+	}
+
+	&.controls-right {
+		& .es-input__inner {
+			padding-right: 50px;
+		}
+
+		& .es-input-number__decrease,
+		& .es-input-number__increase {
+			line-height: $input-h-base / 2 - 1px;
+
+			&.disabled {
+				background: $bg-base;
+				color: $tc-placeholder;
+				cursor: not-allowed;
+
+				&:hover {
+					color: $tc-placeholder;
+				}
+			}
+
+			& [class*='es-icon'] {
+				transform: scale(0.8);
+			}
+		}
+
+		& .es-input-number__decrease {
+			right: 1px;
+			bottom: 1px;
+			top: auto;
+			left: auto;
+			border-right: none;
+			border-left: 1px solid #dcdfe6;
+			border-radius: 0 0 $radius 0;
+		}
+
+		& .es-input-number__increase {
+			border-radius: 0 $radius 0 0;
+			border-bottom: 1px solid $bc-base;
+		}
+	}
+
+	@each $size, $height, $width in (mini, $input-h-mini, $width - 20px),
+		(medium, $input-h-medium, $width + 20px),
+		(large, $input-h-large, $width + 40px)
+	{
+		&.#{$size} {
+			line-height: $height - 2px;
+			width: $width;
+
+			.es-input-number__decrease,
+			.es-input-number__increase {
+				width: $height + 4px;
+			}
+
+			&.controls-right {
+				.es-input-number__decrease,
+				.es-input-number__increase {
+					line-height: $height / 2 - 1px;
+				}
+			}
+		}
+	}
+}
