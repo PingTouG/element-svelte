@@ -1,163 +1,132 @@
 <script lang="ts">
-	import { Input, Icon } from '../../../packages/main'
-
-	let value = ''
+	import { InputNumber } from '../../../packages/main'
+	let value = 0
 </script>
 
 <div>
 	<h3>基本使用</h3>
 	<br />
 	<div>
-		<Input class="input" placeholder="请输入内容" bind:value />
-	</div>
-	<br />
-	<h3>最大/最小长度</h3>
-	<br />
-	<div>
-		<Input class="input" placeholder="请输入内容" maxlength="11" bind:value />
-		<Input class="input" placeholder="请输入内容" minlength="2" bind:value />
-	</div>
-	<br />
-	<h3>清除操作</h3>
-	<br />
-	<div>
-		<Input class="input" placeholder="请输入内容" bind:value clearable />
-	</div>
-	<br />
-	<h3>密码框</h3>
-	<br />
-	<div>
-		<Input
-			type="password"
-			class="input"
-			placeholder="请输入内容"
-			bind:value
-			showPassword
-		/>
-		<Input
-			type="password"
-			class="input"
-			placeholder="请输入内容"
-			bind:value
-			showPassword
-			clearable
-		/>
-		<Input
-			type="password"
-			class="input"
-			placeholder="请输入内容"
-			bind:value
-			suffixIcon="zoom-in"
-			showPassword
-			clearable
-		/>
-		<Input
-			type="password"
-			class="input"
-			placeholder="请输入内容"
-			bind:value
-			showPassword
-			clearable
-		/>
+		<InputNumber class="input" placeholder="请输入内容" bind:value />
 	</div>
 	<br />
 	<h3>禁用</h3>
 	<br />
 	<div>
-		<Input class="input" placeholder="请输入内容" bind:value disabled />
+		<InputNumber class="input" placeholder="请输入内容" bind:value disabled />
+	</div>
+	<br />
+	<h3>不使用控制按钮</h3>
+	<br />
+	<div>
+		<InputNumber
+			class="input"
+			placeholder="请输入内容"
+			bind:value
+			controls="{false}"
+		/>
+	</div>
+	<br />
+	<h3>右侧按钮</h3>
+	<br />
+	<div>
+		<InputNumber
+			class="input"
+			placeholder="请输入内容"
+			bind:value
+			controlsPosition="right"
+		/>
+	</div>
+	<br />
+	<h3>最大/小值</h3>
+	<br />
+	<div>
+		<InputNumber class="input" placeholder="请输入内容" bind:value min="{4}" />
+		<InputNumber class="input" placeholder="请输入内容" bind:value max="{6}" />
+	</div>
+	<br />
+	<h3>步数</h3>
+	<br />
+	<div>
+		<InputNumber class="input" placeholder="请输入内容" bind:value step="{2}" />
+	</div>
+	<br />
+	<h3>严格步数</h3>
+	<br />
+	<div>
+		<InputNumber
+			class="input"
+			placeholder="请输入内容"
+			bind:value
+			step="{2}"
+			stepStrictly
+		/>
+	</div>
+	<br />
+	<h3>精度</h3>
+	<br />
+	<div>
+		<InputNumber
+			class="input"
+			placeholder="请输入内容"
+			bind:value
+			precision="{2}"
+			step="{0.1}"
+		/>
 	</div>
 	<br />
 	<h3>大小</h3>
 	<br />
 	<div>
-		<Input
+		<InputNumber
 			class="input"
 			placeholder="请输入内容"
 			bind:value
 			size="mini"
-			clearable
+			controlsPosition="right"
 		/>
-		<Input class="input" placeholder="请输入内容" bind:value />
-		<Input class="input" placeholder="请输入内容" bind:value size="medium" />
-		<Input class="input" placeholder="请输入内容" bind:value size="large" />
-	</div>
-	<br />
-	<h3>前/后图标</h3>
-	<br />
-	<div>
-		<Input
+		<InputNumber
 			class="input"
 			placeholder="请输入内容"
 			bind:value
-			prefixIcon="phone"
+			controlsPosition="right"
 		/>
-		<Input
+		<InputNumber
 			class="input"
 			placeholder="请输入内容"
 			bind:value
-			suffixIcon="zoom-in"
+			size="medium"
+			controlsPosition="right"
 		/>
-	</div>
-	<br />
-	<h3>文本域</h3>
-	<div>
-		<Input
+		<InputNumber
 			class="input"
-			type="textarea"
+			placeholder="请输入内容"
 			bind:value
-			autosize="{{ minRows: 2, maxRows: 6 }}"
+			size="large"
+			controlsPosition="right"
 		/>
 	</div>
 	<br />
-	<h3>长度限制</h3>
-	<br />
 	<div>
-		<Input
+		<InputNumber
 			class="input"
 			placeholder="请输入内容"
 			bind:value
-			maxlength="99"
-			showWordLimit
+			size="mini"
 		/>
-		<Input
+		<InputNumber class="input" placeholder="请输入内容" bind:value />
+		<InputNumber
 			class="input"
 			placeholder="请输入内容"
 			bind:value
-			maxlength="99"
-			showWordLimit
-			clearable
+			size="medium"
 		/>
-		<Input
+		<InputNumber
 			class="input"
 			placeholder="请输入内容"
 			bind:value
-			maxlength="99"
-			showWordLimit
-			clearable
-			suffixIcon="search"
+			size="large"
 		/>
-		<Input
-			class="input"
-			placeholder="请输入内容"
-			bind:value
-			type="textarea"
-			maxlength="1000"
-			showWordLimit
-		/>
-	</div>
-	<br />
-	<h3>前/后置</h3>
-	<br />
-	<div>
-		<Input class="input" placeholder="请输入内容" bind:value>
-			<span slot="prepend">Http://</span>
-		</Input>
-		<Input class="input" placeholder="请输入内容" bind:value>
-			<span slot="append">.com</span>
-		</Input>
-		<Input class="input" placeholder="请输入内容" bind:value>
-			<Icon slot="append" name="search" />
-		</Input>
 	</div>
 	<br />
 </div>
