@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount, tick } from 'svelte'
+	import { createEventDispatcher, onMount } from 'svelte'
 	import { trimConcat, preffixConcat, isKorean, throttle } from '../utils/tools'
 	import Icon from '../Icon/index.svelte'
 	import calcTextareaHeight from './calcTextareaHeight'
